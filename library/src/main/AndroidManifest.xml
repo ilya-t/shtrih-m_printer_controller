@@ -1,9 +1,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shtrih.fiscalprinter">
+          package="com.shtrih.fiscalprinter">
 
-    <application android:allowBackup="true" android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher">
+<uses-permission android:name="android.permission.BLUETOOTH"/>
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+<uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED"/>
 
-    </application>
+<application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+         >
+    <activity
+            android:name="com.shtrih.tinyjavapostester.DeviceListActivity"
+            android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar" >
+    </activity>
+
+<!--
+    <service
+            android:name="com.shtrih.android.util.NetworkControl"
+            android:label="Bluetooth connection service" >
+    </service>
+-->
+</application>
 
 </manifest>
