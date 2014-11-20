@@ -12,6 +12,15 @@ package com.shtrih.jpos;
  *
  * @author V.Kravtsov
  */
+import com.shtrih.util.SysUtils;
+import com.shtrih.util.XmlUtils;
+
+import org.apache.log4j.Logger;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
@@ -23,15 +32,6 @@ import java.util.Vector;
 import jpos.JposConst;
 import jpos.JposException;
 import jpos.JposStatisticsConst;
-
-import org.apache.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import com.shtrih.util.SysUtils;
-import com.shtrih.util.XmlUtils;
 
 public class JposDeviceStatistics implements JposStatistics,
         JposStatisticsConst, JposConst {
@@ -61,15 +61,7 @@ public class JposDeviceStatistics implements JposStatistics,
 
     @Override
     public String toString() {
-        return
-                        "unifiedPOSVersion: "+String.valueOf(unifiedPOSVersion)+"\n"+
-                        "deviceCategory: "+String.valueOf(deviceCategory)+"\n"+
-                        "manufacturerName: "+String.valueOf(manufacturerName)+"\n"+
-                        "modelName: "+String.valueOf(modelName)+"\n"+
-                        "serialNumber: "+String.valueOf(serialNumber)+"\n"+
-                        "firmwareRevision: "+String.valueOf(firmwareRevision)+"\n"+
-                        "physicalInterface: "+String.valueOf(physicalInterface)+"\n"+
-                        "installationDate: "+String.valueOf(installationDate)+"\n";        //return super.toString();
+        return super.toString();
     }
 
     public String installationDate = "";

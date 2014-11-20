@@ -5,7 +5,13 @@ import com.printerhelper.common.BasePrintError;
 public class PrintError implements BasePrintError {
     private static final int CODE_FAIL = -1;
     private static final int CODE_SUCCESS = 0;
-    public static final PrintError success = new PrintError(CODE_SUCCESS, "");
+
+    @Override
+    public String toString() {
+        return errorDesc+"("+errorCode+")";
+    }
+
+    public static final PrintError success = new PrintError(CODE_SUCCESS, "Completed");
     private int errorCode;
     private String errorDesc;
 
@@ -16,6 +22,11 @@ public class PrintError implements BasePrintError {
 
     public PrintError(int code, String description) {
         errorCode = code;
+        errorDesc = description;
+    }
+
+    public PrintError(String description) {
+        errorCode = CODE_FAIL;
         errorDesc = description;
     }
 
