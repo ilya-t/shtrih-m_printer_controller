@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import android.util.SparseArray;
 import com.printerhelper.common.BaseCashCheck;
 import com.printerhelper.common.BaseDeviceSettings;
 import com.printerhelper.common.BasePrintError;
@@ -93,6 +94,16 @@ public class ShtrihPrinter implements BasePrinter{
     public BasePrintError printCheck(BaseCashCheck<? extends CheckItem> cashCheck, CheckType checkType) {
         try {
             printer.resetPrinter();
+            SparseArray<Integer> vatList = getVatList();
+
+            for (CheckItem checkItem : cashCheck.getItemList()){
+                if (checkItem.getVatAmount() > 0){
+                    if (vatList.indexOfValue(checkItem.getVatAmount()*100) != -1){
+                        return new PrintError("Printer does not support VAT "+checkItem.getVatAmount());
+                    }
+                }
+            }
+
             switch (checkType) {
                 case SALE:
                     printer.setFiscalReceiptType(jpos.FiscalPrinterConst.FPTR_RT_SALES);
@@ -108,13 +119,19 @@ public class ShtrihPrinter implements BasePrinter{
 
 //            printer.printNormal(FiscalPrinterConst.FPTR_S_RECEIPT, itemName);
 
+            int i = 0;
             long totalSum = 0;
             for (CheckItem checkItem : cashCheck.getItemList()){
                 long price = ((Double) checkItem.getPrice()).longValue()*100;
                 int decimalPlaces = 1000;
                 int quantity = ((Double) checkItem.getQuantity()).intValue();
                 String info = String.valueOf(printer.getQuantityDecimalPlaces())+"/"+String.valueOf(printer.getQuantityLength());// 3 / 10
-                printer.printRecItem(checkItem.getTitle(), 0, quantity*decimalPlaces, 0, price, "шт.");
+
+                int vatIndex = vatList.indexOfValue(checkItem.getVatAmount() * 100);
+                if (vatIndex < 1){
+                    vatIndex = 0;
+                }
+                printer.printRecItem(checkItem.getTitle(), 0, quantity*decimalPlaces, vatIndex, price, "шт.");
                 totalSum += price * quantity;
             }
 
@@ -149,6 +166,26 @@ public class ShtrihPrinter implements BasePrinter{
             return new PrintError(e);
         }
         return PrintError.success;
+    }
+
+    public SparseArray<Integer> getVatList() {
+        SparseArray<Integer> result = new SparseArray<>();
+        int[] args = new int[1];
+
+        try {
+            if (getPrinter().getCapSetVatTable()){
+                int vatEntryCount = getPrinter().getNumVatRates();
+
+                for (int i = 1; i < vatEntryCount+1; i++) {
+                    getPrinter().getVatEntry(i, 0, args);
+                    result.put(i, args[0]);
+                }
+            }
+        } catch (JposException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     @Override
@@ -282,4 +319,6 @@ public class ShtrihPrinter implements BasePrinter{
     public FiscalPrinter getPrinter() {
         return printer;
     }
+
+
 }
