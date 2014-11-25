@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import jpos.FiscalPrinter;
@@ -82,7 +83,8 @@ public class ShtrihPrinter implements BasePrinter{
     @Override
     public BasePrintError cancelCheck() {
         try {
-            printer.printRecVoid("");
+            printer.printRecVoid("---");
+            printer.endFiscalReceipt(false);
             return PrintError.success;
         } catch (JposException e) {
             e.printStackTrace();
@@ -117,37 +119,42 @@ public class ShtrihPrinter implements BasePrinter{
 
             printer.beginFiscalReceipt(false);
 
-//            printer.printNormal(FiscalPrinterConst.FPTR_S_RECEIPT, itemName);
-
-            int i = 0;
+            if (cashCheck.getHeaders() != null){
+                for (String header : cashCheck.getHeaders()){
+                    printer.printRecMessage(header);
+                }
+            }
             long totalSum = 0;
+            int decimalPlaces = (int) Math.pow(10, printer.getQuantityDecimalPlaces());
             for (CheckItem checkItem : cashCheck.getItemList()){
                 long price = ((Double) checkItem.getPrice()).longValue()*100;
-                int decimalPlaces = 1000;
                 int quantity = ((Double) checkItem.getQuantity()).intValue();
-                String info = String.valueOf(printer.getQuantityDecimalPlaces())+"/"+String.valueOf(printer.getQuantityLength());// 3 / 10
 
                 int vatIndex = vatList.indexOfValue(checkItem.getVatAmount() * 100);
                 if (vatIndex < 1){
                     vatIndex = 0;
                 }
-                printer.printRecItem(checkItem.getTitle(), 0, quantity*decimalPlaces, vatIndex, price, "шт.");
+
+                switch (checkType) {
+                    case SALE:
+                        printer.printRecItem(checkItem.getTitle(), 0, quantity * decimalPlaces, vatIndex, price, "");
+                        break;
+                    case REFUND:
+                        printer.printRecItemVoid(checkItem.getTitle(), 0, quantity * decimalPlaces, vatIndex, price, "");
+                        break;
+                    default:
+                        return new PrintError("check type not supported");
+                }
+
+                if (checkItem.getHeaders() != null){
+                    for (String header : checkItem.getHeaders()){
+                        printer.printRecMessage(header);
+                    }
+                }
                 totalSum += price * quantity;
             }
 
-
-
-    /*            for (int i = 0; i < howMuch; i++) {
-                    long price = Math.abs(rand.nextLong() % 1000);
-                    payment += price;
-
-                    String itemName = items[rand.nextInt(items.length)];
-                    printer.printNormal(FiscalPrinterConst.FPTR_S_RECEIPT, itemName);
-                    printer.printRecItem(itemName, price, 0, 0, 0, "");
-                }
-                printer.printRecTotal(payment, payment, "1");
-    */
-            printer.printRecTotal(totalSum, totalSum, "(PAID)");
+            printer.printRecTotal(totalSum, totalSum, "");
             printer.endFiscalReceipt(false);
             cashCheck.setCheckTime(getPrinterTimeInMillis());
             String[] data = new String[1];
@@ -279,9 +286,11 @@ public class ShtrihPrinter implements BasePrinter{
             return -1;
         }
 
-        DateFormat df = new SimpleDateFormat("ddmmyyyyHHmm");
+        DateFormat df = new SimpleDateFormat("ddMMyyyyHHmm");
         try {
             Date dt = df.parse(date[0]);
+            Calendar c = Calendar.getInstance();
+            c.setTime(dt);
             return dt.getTime();
         } catch (ParseException e) {
             e.printStackTrace();

@@ -112,6 +112,9 @@ public class DeviceSettings implements BaseDeviceSettings{
 
     @Override
     public String toString() {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(dateTime);
+
         return
                 //super.toString();
                 "unifiedPOSVersion: "+String.valueOf(unifiedPOSVersion)+"\n"+
@@ -121,7 +124,7 @@ public class DeviceSettings implements BaseDeviceSettings{
                 "serialNumber: "+String.valueOf(serialNumber)+"\n"+
                 "firmwareRevision: "+String.valueOf(firmwareRevision)+"\n"+
                 "physicalInterface: "+String.valueOf(physicalInterface)+"\n"+
-                "dateTime: "+String.valueOf(dateTime)+"\n";
+                "dateTime: "+ c.getTime().toString()+ " / " +String.valueOf(dateTime)+"\n";
                         //return super.toString();
     }
 
