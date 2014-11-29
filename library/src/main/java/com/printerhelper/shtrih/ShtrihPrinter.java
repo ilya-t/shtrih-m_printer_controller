@@ -36,7 +36,7 @@ public class ShtrihPrinter implements BasePrinter{
     private final static String TAG = ShtrihPrinter.class.getSimpleName();
     private boolean isConfigured;
     private SettingsContainer settingsContainer;
-    private DeviceSettings connectionSettings;
+    private ShtrihDeviceSettings connectionSettings;
 
     public ShtrihPrinter(Context context) {
         // readModelsXml();
@@ -264,12 +264,12 @@ public class ShtrihPrinter implements BasePrinter{
 
     @Override
     public BaseDeviceSettings getDeviceInfo() {
-        DeviceSettings ds;
+        ShtrihDeviceSettings ds;
         if (connectionSettings != null){
-            ds = new DeviceSettings(connectionSettings.getMacAddress());
+            ds = new ShtrihDeviceSettings(connectionSettings.getMacAddress());
             ds.setError(ds.update(this));
         }else{
-            ds = new DeviceSettings("");
+            ds = new ShtrihDeviceSettings("");
             ds.setError(new PrintError("unable to connect to device"));
         }
         return ds;
@@ -317,9 +317,9 @@ public class ShtrihPrinter implements BasePrinter{
         }
     }
 
-    private DeviceSettings getConnectionSettings() {
+    private ShtrihDeviceSettings getConnectionSettings() {
         if (connectionSettings == null){
-            connectionSettings = new DeviceSettings(settingsContainer.getConnectSettings());
+            connectionSettings = new ShtrihDeviceSettings(settingsContainer.getConnectSettings());
         }
         return connectionSettings;
     }

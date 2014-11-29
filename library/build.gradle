@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.14.2'
     }
 }
 
@@ -14,7 +14,6 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.shtrih.fiscalprinter"
         minSdkVersion 15
         targetSdkVersion 15
         versionCode 1
@@ -22,7 +21,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,4 +36,5 @@ dependencies {
     compile files('libs/jbarcode-0.2.8.jar')
     compile files('libs/jpos113.jar')
     compile files('libs/log4j-1.2.16.jar')
+    compile files('libs/printerCommons.jar')
 }

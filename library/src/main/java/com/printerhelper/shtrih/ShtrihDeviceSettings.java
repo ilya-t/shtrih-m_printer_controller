@@ -15,7 +15,7 @@ import java.util.Calendar;
 import jpos.FiscalPrinter;
 import jpos.JposException;
 
-public class DeviceSettings implements BaseDeviceSettings{
+public class ShtrihDeviceSettings implements BaseDeviceSettings{
     private String macAddress;
 
     private String unifiedPOSVersion;
@@ -79,7 +79,7 @@ public class DeviceSettings implements BaseDeviceSettings{
         return PrintError.success;
     }
 
-    public DeviceSettings(String macAddress) {
+    public ShtrihDeviceSettings(String macAddress) {
         this.macAddress = macAddress;
     }
 
