@@ -1,5 +1,6 @@
 package com.printerhelper.shtrih;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.printerhelper.common.BaseDeviceSettings;
@@ -91,6 +92,11 @@ public class ShtrihDeviceSettings implements BaseDeviceSettings{
     @Override
     public String getSerialNumber() {
         return serialNumber;
+    }
+
+    @Override
+    public boolean isConfigured() {
+        return !TextUtils.isEmpty(macAddress);
     }
 
     @Override
