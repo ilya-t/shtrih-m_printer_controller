@@ -70,6 +70,12 @@ public class ShtrihPrinter implements BasePrinter{
             if (printer.getState() != JposConst.JPOS_S_CLOSED) {
                 printer.close();
             }
+
+            BasePrintError error = applyDeviceInfo(getConnectionSettings().getMacAddress());
+            if (error != null && !error.isClear()){
+                return error;
+            }
+
             printer.open("ShtrihFptr");
             printer.claim(3000);
             printer.setDeviceEnabled(true);
