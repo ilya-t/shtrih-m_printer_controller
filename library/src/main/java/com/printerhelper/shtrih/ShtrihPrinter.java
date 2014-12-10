@@ -31,6 +31,12 @@ import jpos.JposConst;
 import jpos.JposException;
 
 public class ShtrihPrinter implements BasePrinter{
+    public final static String PAYMENT_TYPE_UNKNOWN = "-1";
+    public final static String PAYMENT_TYPE_CASH = "0";
+    public final static String PAYMENT_TYPE_CREDIT = "10";
+    public final static String PAYMENT_TYPE_PACKAGE = "20";
+    public final static String PAYMENT_TYPE_CARD = "30";
+    private static final int ERROR_CODE_UNSUPPORTED_PAYMENT_TYPE = -100;
     private static Logger logger = Logger.getLogger(ShtrihPrinter.class.getSimpleName());
     private FiscalPrinter printer = null;
     private final static String TAG = ShtrihPrinter.class.getSimpleName();
@@ -160,7 +166,15 @@ public class ShtrihPrinter implements BasePrinter{
                 totalSum += price * quantity;
             }
 
-            printer.printRecTotal(totalSum, totalSum, "");
+            String paymentType = cashCheck.getPaymentType();
+            if (this instanceof ShtrihPaymentTypeParser){
+                paymentType = ((ShtrihPaymentTypeParser)this).parseShtrihPaymentType(cashCheck);
+            }
+
+            if (paymentType.equals(PAYMENT_TYPE_UNKNOWN)){
+                return new PrintError(ERROR_CODE_UNSUPPORTED_PAYMENT_TYPE,"unsupported payment type");
+            }
+            printer.printRecTotal(totalSum, totalSum, paymentType);
             printer.endFiscalReceipt(false);
             cashCheck.setCheckTime(getPrinterTimeInMillis());
             String[] data = new String[1];
@@ -334,6 +348,4 @@ public class ShtrihPrinter implements BasePrinter{
     public FiscalPrinter getPrinter() {
         return printer;
     }
-
-
 }

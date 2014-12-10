@@ -147,9 +147,10 @@
         <prop name="payType39" type="String" value="3"/>
         <!-- Payment names -->
         <prop name="paymentName1" type="String" value="НАЛИЧНЫМИ"/>
-        <prop name="paymentName2" type="String" value="КАРТОЙ"/>
-        <prop name="paymentName3" type="String" value="TARE"/>
-        <prop name="paymentName4" type="String" value="CARD"/>
+        <prop name="paymentName2" type="String" value="КРЕДИТОМ"/>
+        <prop name="paymentName3" type="String" value="ТАРОЙ"/>
+        <prop name="paymentName4" type="String" value="КАРТОЙ"/>
+
         <!-- ZeroPriceFilter -->
         <prop name="ZeroPriceFilterEnabled" type="String" value="0"/>
         <prop name="ZeroPriceFilterTime1" type="String" value="15:00"/>
