@@ -3,8 +3,8 @@ package com.printerhelper.shtrih;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-
 import android.util.SparseArray;
+
 import com.printerhelper.common.BaseCashCheck;
 import com.printerhelper.common.BaseDeviceSettings;
 import com.printerhelper.common.BasePrintError;
@@ -12,6 +12,7 @@ import com.printerhelper.common.BasePrinter;
 import com.printerhelper.common.CheckItem;
 import com.printerhelper.common.DefaultSettingsContainer;
 import com.printerhelper.common.SettingsContainer;
+import com.shtrih.fiscalprinter.ShtrihFiscalPrinter;
 import com.shtrih.tinyjavapostester.ConfigureLog4J;
 import com.shtrih.tinyjavapostester.DeviceListActivity;
 import com.shtrih.tinyjavapostester.JposConfig;
@@ -107,7 +108,8 @@ public class ShtrihPrinter implements BasePrinter{
     @Override
     public BasePrintError printCheck(BaseCashCheck<? extends CheckItem> cashCheck, CheckType checkType) {
         try {
-            printer.resetPrinter();
+            ShtrihFiscalPrinter shtrihFiscalPrinter = new ShtrihFiscalPrinter(printer);
+            shtrihFiscalPrinter.resetPrinter();
             SparseArray<Integer> vatList = getVatList();
 
             for (CheckItem checkItem : cashCheck.getItemList()){
@@ -120,24 +122,26 @@ public class ShtrihPrinter implements BasePrinter{
 
             switch (checkType) {
                 case SALE:
-                    printer.setFiscalReceiptType(jpos.FiscalPrinterConst.FPTR_RT_SALES);
+                    shtrihFiscalPrinter.setFiscalReceiptType(jpos.FiscalPrinterConst.FPTR_RT_SALES);
                     break;
                 case REFUND:
-                    printer.setFiscalReceiptType(FiscalPrinterConst.FPTR_RT_REFUND);
+                    shtrihFiscalPrinter.setFiscalReceiptType(FiscalPrinterConst.FPTR_RT_REFUND);
                     break;
                 default:
                     return new PrintError("check type not supported");
             }
 
-            printer.beginFiscalReceipt(false);
+            shtrihFiscalPrinter.beginFiscalReceipt(false);
 
             if (cashCheck.getHeaders() != null){
                 for (String header : cashCheck.getHeaders()){
-                    printer.printRecMessage(header);
+                    shtrihFiscalPrinter.printRecMessage(header);
                 }
             }
             long totalSum = 0;
-            int decimalPlaces = (int) Math.pow(10, printer.getQuantityDecimalPlaces());
+            int decimalPlaces = (int) Math.pow(10, shtrihFiscalPrinter.getQuantityDecimalPlaces());
+
+
             for (CheckItem checkItem : cashCheck.getItemList()){
                 long price = ((Double) checkItem.getPrice()).longValue()*100;
                 int quantity = ((Double) checkItem.getQuantity()).intValue();
@@ -147,12 +151,14 @@ public class ShtrihPrinter implements BasePrinter{
                     vatIndex = 0;
                 }
 
+                shtrihFiscalPrinter.setDepartment(checkItem.getDepartment());
+
                 switch (checkType) {
                     case SALE:
-                        printer.printRecItem(checkItem.getTitle(), 0, quantity * decimalPlaces, vatIndex, price, "");
+                        shtrihFiscalPrinter.printRecItem(checkItem.getTitle(), 0, quantity * decimalPlaces, vatIndex, price, "");
                         break;
                     case REFUND:
-                        printer.printRecItemVoid(checkItem.getTitle(), 0, quantity * decimalPlaces, vatIndex, price, "");
+                        shtrihFiscalPrinter.printRecItemVoid(checkItem.getTitle(), 0, quantity * decimalPlaces, vatIndex, price, "");
                         break;
                     default:
                         return new PrintError("check type not supported");
@@ -160,7 +166,7 @@ public class ShtrihPrinter implements BasePrinter{
 
                 if (checkItem.getHeaders() != null){
                     for (String header : checkItem.getHeaders()){
-                        printer.printRecMessage(header);
+                        shtrihFiscalPrinter.printRecMessage(header);
                     }
                 }
                 totalSum += price * quantity;
@@ -174,11 +180,11 @@ public class ShtrihPrinter implements BasePrinter{
             if (paymentType.equals(PAYMENT_TYPE_UNKNOWN)){
                 return new PrintError(ERROR_CODE_UNSUPPORTED_PAYMENT_TYPE,"unsupported payment type");
             }
-            printer.printRecTotal(totalSum, totalSum, paymentType);
-            printer.endFiscalReceipt(false);
+            shtrihFiscalPrinter.printRecTotal(totalSum, totalSum, paymentType);
+            shtrihFiscalPrinter.endFiscalReceipt(false);
             cashCheck.setCheckTime(getPrinterTimeInMillis());
             String[] data = new String[1];
-            printer.getData(FiscalPrinterConst.FPTR_GD_RECEIPT_NUMBER, null, data);
+            shtrihFiscalPrinter.getData(FiscalPrinterConst.FPTR_GD_RECEIPT_NUMBER, null, data);
             try {
                 int checkNumber = Integer.parseInt(data[0]);
                 cashCheck.setCheckNumber(checkNumber);
