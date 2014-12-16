@@ -20,7 +20,26 @@ public class JposConfig {
 
         final String activeConfigFileName = "jpos.xml";
 
-        copyAsset(configFileName, SysUtils.getFilesPath() + activeConfigFileName);
+        InputStream is = null;
+        OutputStream os = null;
+        try {
+            is = StaticContext.getContext().getAssets().open(configFileName);
+            os = new FileOutputStream(new File(SysUtils.getFilesPath() + activeConfigFileName));
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } finally {
+            if (is != null){
+                is.close();
+            }
+
+            if (os != null){
+                os.close();
+            }
+        }
+
 		String fileURL = "file://" + SysUtils.getFilesPath() + activeConfigFileName;
 		System.setProperty(
 				JposPropertiesConst.JPOS_POPULATOR_FILE_URL_PROP_NAME, fileURL);
@@ -38,24 +57,5 @@ public class JposConfig {
 				jposEntry.modifyPropertyValue("portName", portName);
 			}
 		}
-	}
-
-	public static void copyAsset(String assetFileName, String destFile)
-			throws Exception {
-		InputStream is = null;
-		OutputStream os = null;
-		try {
-			is = StaticContext.getContext().getAssets().open(assetFileName);
-			os = new FileOutputStream(new File(destFile));
-			byte[] buffer = new byte[1024];
-			int length;
-			while ((length = is.read(buffer)) > 0) {
-				os.write(buffer, 0, length);
-			}
-		} finally {
-			is.close();
-			os.close();
-		}
-
 	}
 }
