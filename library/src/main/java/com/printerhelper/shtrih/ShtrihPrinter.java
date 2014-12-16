@@ -34,9 +34,13 @@ import jpos.JposException;
 public class ShtrihPrinter implements BasePrinter{
     public final static String PAYMENT_TYPE_UNKNOWN = "-1";
     public final static String PAYMENT_TYPE_CASH = "0";
-    public final static String PAYMENT_TYPE_CREDIT = "10";
-    public final static String PAYMENT_TYPE_PACKAGE = "20";
-    public final static String PAYMENT_TYPE_CARD = "30";
+    public final static String PAYMENT_TYPE_CASHLESS_1 = "10";
+    public final static String PAYMENT_TYPE_CASHLESS_2 = "20";
+    public final static String PAYMENT_TYPE_CASHLESS_3 = "30";
+    public final static String PAYMENT_TYPE_CREDIT = PAYMENT_TYPE_CASHLESS_1;
+    public final static String PAYMENT_TYPE_PACKAGE = PAYMENT_TYPE_CASHLESS_2;
+    public final static String PAYMENT_TYPE_CARD = PAYMENT_TYPE_CASHLESS_3;
+
     private static final int ERROR_CODE_UNSUPPORTED_PAYMENT_TYPE = -100;
     private static Logger logger = Logger.getLogger(ShtrihPrinter.class.getSimpleName());
     private FiscalPrinter printer = null;
@@ -273,7 +277,7 @@ public class ShtrihPrinter implements BasePrinter{
     @Override
     public BasePrintError applyDeviceInfo(String address) {
         try {
-            JposConfig.configure("ShtrihFptr", address);
+            JposConfig.configure("ShtrihFptr", address, getJposConfigFileName());
             isConfigured = true;
 
             if (getConnectionSettings().getMacAddress().equals("")){
@@ -286,6 +290,10 @@ public class ShtrihPrinter implements BasePrinter{
             e.printStackTrace();
             return new PrintError(e);
         }
+    }
+
+    protected String getJposConfigFileName() {
+        return "jpos.xml";
     }
 
     @Override

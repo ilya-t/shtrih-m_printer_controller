@@ -175,7 +175,7 @@
         <!-- ESC commands enabled -->
         <prop name="escCommandsEnabled" type="String" value="1"/>
         <!-- Table mode, 0 - auto, 1 - disabled -->
-        <prop name="tableMode" type="String" value="1"/>
+        <prop name="tableMode" type="String" value="0"/>
         <!-- Logo mode, 0 - feed paper, 1 - split image -->
         <prop name="logoMode" type="String" value="1"/>
         <!-- SearchMode, 0 - none, 1 - search on error -->
