@@ -43,6 +43,7 @@ public class ShtrihPrinter implements BasePrinter{
 
     private static final int ERROR_CODE_UNSUPPORTED_PAYMENT_TYPE = -100;
     private static Logger logger = Logger.getLogger(ShtrihPrinter.class.getSimpleName());
+    protected final Context context;
     private FiscalPrinter printer = null;
     private final static String TAG = ShtrihPrinter.class.getSimpleName();
     private boolean isConfigured;
@@ -52,6 +53,7 @@ public class ShtrihPrinter implements BasePrinter{
     public ShtrihPrinter(Context context) {
         // readModelsXml();
         ConfigureLog4J.configure();
+        this.context = context;
         StaticContext.setContext(context.getApplicationContext());
         printer = new FiscalPrinter();
         settingsContainer = (this instanceof SettingsContainer)
@@ -137,6 +139,8 @@ public class ShtrihPrinter implements BasePrinter{
 
             shtrihFiscalPrinter.beginFiscalReceipt(false);
 
+            onCheckOpened(shtrihFiscalPrinter);
+
             if (cashCheck.getHeaders() != null){
                 for (String header : cashCheck.getHeaders()){
                     shtrihFiscalPrinter.printRecMessage(header);
@@ -203,6 +207,10 @@ public class ShtrihPrinter implements BasePrinter{
             return new PrintError(e);
         }
         return PrintError.success;
+    }
+
+    protected void onCheckOpened(ShtrihFiscalPrinter shtrihFiscalPrinter) throws JposException{
+
     }
 
     public SparseArray<Integer> getVatList() {
