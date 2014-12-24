@@ -15,3 +15,32 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-dontobfuscate
+-dontwarn **
+
+-keep public class com.shtrih.fiscalprinter.**
+-keepclassmembers class com.shtrih.fiscalprinter.**{
+    public *;
+}
+
+-keep public class com.printerhelper.common.**
+-keepclassmembers class com.printerhelper.common.**{
+    public *;
+}
+
+-keep public class com.printerhelper.shtrih.PrintError
+-keepclassmembers class com.printerhelper.shtrih.PrintError{
+    public *;
+}
+-keep public class com.printerhelper.shtrih.ShtrihDeviceSettings
+-keepclassmembers class com.printerhelper.shtrih.ShtrihDeviceSettings{
+    public *;
+}
+-keep public class com.printerhelper.shtrih.ShtrihPaymentTypeParser
+-keepclassmembers class com.printerhelper.shtrih.ShtrihPaymentTypeParser{
+    public *;
+}
+-keep public class com.printerhelper.shtrih.ShtrihPrinter
+-keepclassmembers class com.printerhelper.shtrih.ShtrihPrinter{
+    public *;
+}
