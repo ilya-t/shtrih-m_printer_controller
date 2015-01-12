@@ -35,7 +35,13 @@ android {
 }
 
 dependencies {
-    //    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/printerCommons.jar')
-    compile project(':libraries:shtrih-m:library:jpos-core')
+
+    // best crutch ever
+    String coreProject = projectDir.getPath()+"/jpos-core"
+    coreProject = coreProject
+            .replace(getRootDir().getPath(), "")
+            .replace("/", ":")
+            .replace("\\", ":")
+    compile project(coreProject)
 }
