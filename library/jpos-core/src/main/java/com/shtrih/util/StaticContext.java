@@ -12,8 +12,8 @@ public class StaticContext {
 		return context;
 	}
 
-	// NOTE: Application must call setApplication to provide
-	// application instance to library
+	// NOTE: Application must call setContext to provide application instance to
+	// library
 	public static void setContext(Context value) {
 		context = value;
 	}

@@ -32,25 +32,20 @@ public class ReceiptPrinterImpl implements ReceiptPrinter {
         this.printer = printer;
         this.params = params;
     }
-
     
     public void printPreLine() throws Exception {
-        String preLine = params.preLine;
-        if (preLine.length() > 0) {
-            printText(preLine);
-            preLine = "";
+        if (params.preLine.length() > 0) {
+            printText(params.preLine);
+            params.preLine = "";
         }
     }
-
-    
+   
     public void printPostLine() throws Exception {
-        String postLine = params.postLine;
-        if (postLine.length() > 0) {
-            printText(postLine);
-            postLine = "";
+        if (params.postLine.length() > 0) {
+            printText(params.postLine);
+            params.postLine = "";
         }
     }
-
     
     public void openReceipt(int receiptType) throws Exception {
         if (printer.getModel().getCapOpenReceipt()) {

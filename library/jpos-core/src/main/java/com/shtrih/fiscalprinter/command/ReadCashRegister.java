@@ -17,9 +17,9 @@ package com.shtrih.fiscalprinter.command;
 import com.shtrih.util.MethodParameter;
 
 /****************************************************************************
- * Get Cash Totalizer Value Command: 1AH. Length: 6 bytes.  Operator password
- * (4 bytes)  Cash totalizer number (1 byte) 0255 Answer: 1AH. Length: 9
- * bytes.  Result Code (1 byte)  Operator index number (1 byte) 130  Cash
+ * Get Cash Totalizer Value Command: 1AH. Length: 6 bytes. ? Operator password
+ * (4 bytes) ? Cash totalizer number (1 byte) 0?255 Answer: 1AH. Length: 9
+ * bytes. ? Result Code (1 byte) ? Operator index number (1 byte) 1?30 ? Cash
  * totalizer value (6 bytes)
  ****************************************************************************/
 

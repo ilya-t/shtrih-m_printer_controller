@@ -1,12 +1,17 @@
 package com.shtrih.fiscalprinter;
 
+/*
+ * ShtrihFiscalPrinter.java
+ *
+ * Created on 23 ?????? 2009 ?., 22:32
+ *
+ * To change this template, choose Tools | Template Manager
+ * and open the template in the editor.
+ */
 /**
  *
  * @author V.Kravtsov
  */
-import com.shtrih.fiscalprinter.command.PrinterStatus;
-import com.shtrih.jpos.fiscalprinter.SmFptrConst;
-
 import jpos.BaseControl;
 import jpos.FiscalPrinter;
 import jpos.FiscalPrinterConst;
@@ -17,6 +22,9 @@ import jpos.events.DirectIOListener;
 import jpos.events.ErrorListener;
 import jpos.events.OutputCompleteListener;
 import jpos.events.StatusUpdateListener;
+
+import com.shtrih.fiscalprinter.command.PrinterStatus;
+import com.shtrih.jpos.fiscalprinter.SmFptrConst;
 
 /**
  * Wrapper class to help using directIO codes *
@@ -70,254 +78,254 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 		}
 	}
 
-	@Override
+	
 	public boolean getCapCompareFirmwareVersion() throws JposException {
 		return printer.getCapCompareFirmwareVersion();
 	}
 
-	@Override
+	
 	public boolean getCapUpdateFirmware() throws JposException {
 		return printer.getCapUpdateFirmware();
 	}
 
-	@Override
+	
 	public void compareFirmwareVersion(String firmwareFileName, int[] result)
 			throws JposException {
 		printer.compareFirmwareVersion(encodeString(firmwareFileName), result);
 	}
 
-	@Override
+	
 	public void updateFirmware(String firmwareFileName) throws JposException {
 		printer.updateFirmware(encodeString(firmwareFileName));
 	}
 
 	// FiscalPrinterControl18
 
-	@Override
+	
 	public boolean getCapStatisticsReporting() throws JposException {
 		return printer.getCapStatisticsReporting();
 	}
 
-	@Override
+	
 	public boolean getCapUpdateStatistics() throws JposException {
 		return printer.getCapUpdateStatistics();
 	}
 
-	@Override
+	
 	public void resetStatistics(String statisticsBuffer) throws JposException {
 		printer.resetStatistics(encodeString(statisticsBuffer));
 	}
 
-	@Override
+	
 	public void retrieveStatistics(String[] statisticsBuffer)
 			throws JposException {
 		printer.retrieveStatistics(statisticsBuffer);
 	}
 
-	@Override
+	
 	public void updateStatistics(String statisticsBuffer) throws JposException {
 		printer.updateStatistics(encodeString(statisticsBuffer));
 	}
 
 	// FiscalPrinterControl17
 
-	@Override
+	
 	public int getAmountDecimalPlaces() throws JposException {
 		return printer.getAmountDecimalPlaces();
 	}
 
 	// FiscalPrinterControl16
 
-	@Override
+	
 	public boolean getCapAdditionalHeader() throws JposException {
 		return printer.getCapAdditionalHeader();
 	}
 
-	@Override
+	
 	public boolean getCapAdditionalTrailer() throws JposException {
 		return printer.getCapAdditionalTrailer();
 	}
 
-	@Override
+	
 	public boolean getCapChangeDue() throws JposException {
 		return printer.getCapChangeDue();
 	}
 
-	@Override
+	
 	public boolean getCapEmptyReceiptIsVoidable() throws JposException {
 		return printer.getCapEmptyReceiptIsVoidable();
 	}
 
-	@Override
+	
 	public boolean getCapFiscalReceiptStation() throws JposException {
 		return printer.getCapFiscalReceiptStation();
 	}
 
-	@Override
+	
 	public boolean getCapFiscalReceiptType() throws JposException {
 		return printer.getCapFiscalReceiptType();
 	}
 
-	@Override
+	
 	public boolean getCapMultiContractor() throws JposException {
 		return printer.getCapMultiContractor();
 	}
 
-	@Override
+	
 	public boolean getCapOnlyVoidLastItem() throws JposException {
 		return printer.getCapOnlyVoidLastItem();
 	}
 
-	@Override
+	
 	public boolean getCapPackageAdjustment() throws JposException {
 		return printer.getCapPackageAdjustment();
 	}
 
-	@Override
+	
 	public boolean getCapPostPreLine() throws JposException {
 		return printer.getCapPostPreLine();
 	}
 
-	@Override
+	
 	public boolean getCapSetCurrency() throws JposException {
 		return printer.getCapSetCurrency();
 	}
 
-	@Override
+	
 	public boolean getCapTotalizerType() throws JposException {
 		return printer.getCapTotalizerType();
 	}
 
-	@Override
+	
 	public int getActualCurrency() throws JposException {
 		return printer.getActualCurrency();
 	}
 
-	@Override
+	
 	public String getAdditionalHeader() throws JposException {
 		return decodeString(printer.getAdditionalHeader());
 	}
 
-	@Override
+	
 	public void setAdditionalHeader(String additionalHeader)
 			throws JposException {
 		printer.setAdditionalHeader(encodeString(additionalHeader));
 	}
 
-	@Override
+	
 	public String getAdditionalTrailer() throws JposException {
 		return decodeString(printer.getAdditionalTrailer());
 	}
 
-	@Override
+	
 	public void setAdditionalTrailer(String additionalTrailer)
 			throws JposException {
 		printer.setAdditionalTrailer(encodeString(additionalTrailer));
 	}
 
-	@Override
+	
 	public String getChangeDue() throws JposException {
 		return decodeString(printer.getChangeDue());
 	}
 
-	@Override
+	
 	public void setChangeDue(String changeDue) throws JposException {
 		printer.setChangeDue(encodeString(changeDue));
 	}
 
-	@Override
+	
 	public int getContractorId() throws JposException {
 		return printer.getContractorId();
 	}
 
-	@Override
+	
 	public void setContractorId(int contractorId) throws JposException {
 		printer.setContractorId(contractorId);
 	}
 
-	@Override
+	
 	public int getDateType() throws JposException {
 		return printer.getDateType();
 	}
 
-	@Override
+	
 	public void setDateType(int dateType) throws JposException {
 		printer.setDateType(dateType);
 	}
 
-	@Override
+	
 	public int getFiscalReceiptStation() throws JposException {
 		return printer.getFiscalReceiptStation();
 	}
 
-	@Override
+	
 	public void setFiscalReceiptStation(int fiscalReceiptStation)
 			throws JposException {
 		printer.setFiscalReceiptStation(fiscalReceiptStation);
 	}
 
-	@Override
+	
 	public int getFiscalReceiptType() throws JposException {
 		return printer.getFiscalReceiptType();
 	}
 
-	@Override
+	
 	public void setFiscalReceiptType(int fiscalReceiptType)
 			throws JposException {
 		printer.setFiscalReceiptType(fiscalReceiptType);
 	}
 
-	@Override
+	
 	public int getMessageType() throws JposException {
 		return printer.getMessageType();
 	}
 
-	@Override
+	
 	public void setMessageType(int messageType) throws JposException {
 		printer.setMessageType(messageType);
 	}
 
-	@Override
+	
 	public String getPostLine() throws JposException {
 		return decodeString(printer.getPostLine());
 	}
 
-	@Override
+	
 	public void setPostLine(String postLine) throws JposException {
 		printer.setPostLine(encodeString(postLine));
 	}
 
-	@Override
+	
 	public String getPreLine() throws JposException {
 		return decodeString(printer.getPreLine());
 	}
 
-	@Override
+	
 	public void setPreLine(String preLine) throws JposException {
 		printer.setPreLine(encodeString(preLine));
 	}
 
-	@Override
+	
 	public int getTotalizerType() throws JposException {
 		return printer.getTotalizerType();
 	}
 
-	@Override
+	
 	public void setTotalizerType(int totalizerType) throws JposException {
 		printer.setTotalizerType(totalizerType);
 	}
 
-	@Override
+	
 	public void setCurrency(int newCurrency) throws JposException {
 		printer.setCurrency(newCurrency);
 	}
 
-	@Override
+	
 	public void printRecCash(long amount) throws JposException {
 		printer.printRecCash(amount);
 	}
 
-	@Override
+	
 	public void printRecItemFuel(String description, long price, int quantity,
 			int vatInfo, long unitPrice, String unitName, long specialTax,
 			String specialTaxName) throws JposException {
@@ -326,677 +334,677 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 				encodeString(specialTaxName));
 	}
 
-	@Override
+	
 	public void printRecItemFuelVoid(String description, long price,
 			int vatInfo, long specialTax) throws JposException {
 		printer.printRecItemFuelVoid(encodeString(description), price, vatInfo,
 				specialTax);
 	}
 
-	@Override
+	
 	public void printRecPackageAdjustment(int adjustmentType,
 			String description, String vatAdjustment) throws JposException {
 		printer.printRecPackageAdjustment(adjustmentType,
 				encodeString(description), encodeString(vatAdjustment));
 	}
 
-	@Override
+	
 	public void printRecPackageAdjustVoid(int adjustmentType,
 			String vatAdjustment) throws JposException {
 		printer.printRecPackageAdjustVoid(adjustmentType,
 				encodeString(vatAdjustment));
 	}
 
-	@Override
+	
 	public void printRecRefundVoid(String description, long amount, int vatInfo)
 			throws JposException {
 		printer.printRecRefundVoid(encodeString(description), amount, vatInfo);
 	}
 
-	@Override
+	
 	public void printRecSubtotalAdjustVoid(int adjustmentType, long amount)
 			throws JposException {
 		printer.printRecSubtotalAdjustVoid(adjustmentType, amount);
 	}
 
-	@Override
+	
 	public void printRecTaxID(String taxID) throws JposException {
 		printer.printRecTaxID(encodeString(taxID));
 	}
 
 	// FiscalPrinterControl13
 
-	@Override
+	
 	public boolean getCapAdditionalLines() throws JposException {
 		return printer.getCapAdditionalLines();
 	}
 
-	@Override
+	
 	public boolean getCapAmountAdjustment() throws JposException {
 		return printer.getCapAmountAdjustment();
 	}
 
-	@Override
+	
 	public boolean getCapAmountNotPaid() throws JposException {
 		return printer.getCapAmountNotPaid();
 	}
 
-	@Override
+	
 	public boolean getCapCheckTotal() throws JposException {
 		return printer.getCapCheckTotal();
 	}
 
-	@Override
+	
 	public boolean getCapCoverSensor() throws JposException {
 		return printer.getCapCoverSensor();
 	}
 
-	@Override
+	
 	public boolean getCapDoubleWidth() throws JposException {
 		return printer.getCapDoubleWidth();
 	}
 
-	@Override
+	
 	public boolean getCapDuplicateReceipt() throws JposException {
 		return printer.getCapDuplicateReceipt();
 	}
 
-	@Override
+	
 	public boolean getCapFixedOutput() throws JposException {
 		return printer.getCapFixedOutput();
 	}
 
-	@Override
+	
 	public boolean getCapHasVatTable() throws JposException {
 		return printer.getCapHasVatTable();
 	}
 
-	@Override
+	
 	public boolean getCapIndependentHeader() throws JposException {
 		return printer.getCapIndependentHeader();
 	}
 
-	@Override
+	
 	public boolean getCapItemList() throws JposException {
 		return printer.getCapItemList();
 	}
 
-	@Override
+	
 	public boolean getCapJrnEmptySensor() throws JposException {
 		return printer.getCapJrnEmptySensor();
 	}
 
-	@Override
+	
 	public boolean getCapJrnNearEndSensor() throws JposException {
 		return printer.getCapJrnNearEndSensor();
 	}
 
-	@Override
+	
 	public boolean getCapJrnPresent() throws JposException {
 		return printer.getCapJrnPresent();
 	}
 
-	@Override
+	
 	public boolean getCapNonFiscalMode() throws JposException {
 		return printer.getCapNonFiscalMode();
 	}
 
-	@Override
+	
 	public boolean getCapOrderAdjustmentFirst() throws JposException {
 		return printer.getCapOrderAdjustmentFirst();
 	}
 
-	@Override
+	
 	public boolean getCapPercentAdjustment() throws JposException {
 		return printer.getCapPercentAdjustment();
 	}
 
-	@Override
+	
 	public boolean getCapPositiveAdjustment() throws JposException {
 		return printer.getCapPositiveAdjustment();
 	}
 
-	@Override
+	
 	public boolean getCapPowerLossReport() throws JposException {
 		return printer.getCapPowerLossReport();
 	}
 
-	@Override
+	
 	public int getCapPowerReporting() throws JposException {
 		return printer.getCapPowerReporting();
 	}
 
-	@Override
+	
 	public boolean getCapPredefinedPaymentLines() throws JposException {
 		return printer.getCapPredefinedPaymentLines();
 	}
 
-	@Override
+	
 	public boolean getCapReceiptNotPaid() throws JposException {
 		return printer.getCapReceiptNotPaid();
 	}
 
-	@Override
+	
 	public boolean getCapRecEmptySensor() throws JposException {
 		return printer.getCapRecEmptySensor();
 	}
 
-	@Override
+	
 	public boolean getCapRecNearEndSensor() throws JposException {
 		return printer.getCapRecNearEndSensor();
 	}
 
-	@Override
+	
 	public boolean getCapRecPresent() throws JposException {
 		return printer.getCapRecPresent();
 	}
 
-	@Override
+	
 	public boolean getCapRemainingFiscalMemory() throws JposException {
 		return printer.getCapRemainingFiscalMemory();
 	}
 
-	@Override
+	
 	public boolean getCapReservedWord() throws JposException {
 		return printer.getCapReservedWord();
 	}
 
-	@Override
+	
 	public boolean getCapSetHeader() throws JposException {
 		return printer.getCapSetHeader();
 	}
 
-	@Override
+	
 	public boolean getCapSetPOSID() throws JposException {
 		return printer.getCapSetPOSID();
 	}
 
-	@Override
+	
 	public boolean getCapSetStoreFiscalID() throws JposException {
 		return printer.getCapSetStoreFiscalID();
 	}
 
-	@Override
+	
 	public boolean getCapSetTrailer() throws JposException {
 		return printer.getCapSetTrailer();
 	}
 
-	@Override
+	
 	public boolean getCapSetVatTable() throws JposException {
 		return printer.getCapSetVatTable();
 	}
 
-	@Override
+	
 	public boolean getCapSlpEmptySensor() throws JposException {
 		return printer.getCapSlpEmptySensor();
 	}
 
-	@Override
+	
 	public boolean getCapSlpFiscalDocument() throws JposException {
 		return printer.getCapSlpFiscalDocument();
 	}
 
-	@Override
+	
 	public boolean getCapSlpFullSlip() throws JposException {
 		return printer.getCapSlpFullSlip();
 	}
 
-	@Override
+	
 	public boolean getCapSlpNearEndSensor() throws JposException {
 		return printer.getCapSlpNearEndSensor();
 	}
 
-	@Override
+	
 	public boolean getCapSlpPresent() throws JposException {
 		return printer.getCapSlpPresent();
 	}
 
-	@Override
+	
 	public boolean getCapSlpValidation() throws JposException {
 		return printer.getCapSlpValidation();
 	}
 
-	@Override
+	
 	public boolean getCapSubAmountAdjustment() throws JposException {
 		return printer.getCapSubAmountAdjustment();
 	}
 
-	@Override
+	
 	public boolean getCapSubPercentAdjustment() throws JposException {
 		return printer.getCapSubPercentAdjustment();
 	}
 
-	@Override
+	
 	public boolean getCapSubtotal() throws JposException {
 		return printer.getCapSubtotal();
 	}
 
-	@Override
+	
 	public boolean getCapTrainingMode() throws JposException {
 		return printer.getCapTrainingMode();
 	}
 
-	@Override
+	
 	public boolean getCapValidateJournal() throws JposException {
 		return printer.getCapValidateJournal();
 	}
 
-	@Override
+	
 	public boolean getCapXReport() throws JposException {
 		return printer.getCapXReport();
 	}
 
 	// Properties
 
-	@Override
+	
 	public int getAmountDecimalPlace() throws JposException {
 		return printer.getAmountDecimalPlace();
 	}
 
-	@Override
+	
 	public boolean getAsyncMode() throws JposException {
 		return printer.getAsyncMode();
 	}
 
-	@Override
+	
 	public void setAsyncMode(boolean asyncMode) throws JposException {
 		printer.setAsyncMode(asyncMode);
 	}
 
-	@Override
+	
 	public boolean getCheckTotal() throws JposException {
 		return printer.getCheckTotal();
 	}
 
-	@Override
+	
 	public void setCheckTotal(boolean checkTotal) throws JposException {
 		printer.setCheckTotal(checkTotal);
 	}
 
-	@Override
+	
 	public int getCountryCode() throws JposException {
 		return printer.getCountryCode();
 	}
 
-	@Override
+	
 	public boolean getCoverOpen() throws JposException {
 		return printer.getCoverOpen();
 	}
 
-	@Override
+	
 	public boolean getDayOpened() throws JposException {
 		return printer.getDayOpened();
 	}
 
-	@Override
+	
 	public int getDescriptionLength() throws JposException {
 		return printer.getDescriptionLength();
 	}
 
-	@Override
+	
 	public boolean getDuplicateReceipt() throws JposException {
 		return printer.getDuplicateReceipt();
 	}
 
-	@Override
+	
 	public void setDuplicateReceipt(boolean duplicateReceipt)
 			throws JposException {
 		printer.setDuplicateReceipt(duplicateReceipt);
 	}
 
-	@Override
+	
 	public int getErrorLevel() throws JposException {
 		return printer.getErrorLevel();
 	}
 
-	@Override
+	
 	public int getErrorOutID() throws JposException {
 		return printer.getErrorOutID();
 	}
 
-	@Override
+	
 	public int getErrorState() throws JposException {
 		return printer.getErrorState();
 	}
 
-	@Override
+	
 	public int getErrorStation() throws JposException {
 		return printer.getErrorStation();
 	}
 
-	@Override
+	
 	public String getErrorString() throws JposException {
 		return decodeString(printer.getErrorString());
 	}
 
-	@Override
+	
 	public boolean getFlagWhenIdle() throws JposException {
 		return printer.getFlagWhenIdle();
 	}
 
-	@Override
+	
 	public void setFlagWhenIdle(boolean flagWhenIdle) throws JposException {
 		printer.setFlagWhenIdle(flagWhenIdle);
 	}
 
-	@Override
+	
 	public boolean getJrnEmpty() throws JposException {
 		return printer.getJrnEmpty();
 	}
 
-	@Override
+	
 	public boolean getJrnNearEnd() throws JposException {
 		return printer.getJrnNearEnd();
 	}
 
-	@Override
+	
 	public int getMessageLength() throws JposException {
 		return printer.getMessageLength();
 	}
 
-	@Override
+	
 	public int getNumHeaderLines() throws JposException {
 		return printer.getNumHeaderLines();
 	}
 
-	@Override
+	
 	public int getNumTrailerLines() throws JposException {
 		return printer.getNumTrailerLines();
 	}
 
-	@Override
+	
 	public int getNumVatRates() throws JposException {
 		return printer.getNumVatRates();
 	}
 
-	@Override
+	
 	public int getOutputID() throws JposException {
 		return printer.getOutputID();
 	}
 
-	@Override
+	
 	public int getPowerNotify() throws JposException {
 		return printer.getPowerNotify();
 	}
 
-	@Override
+	
 	public void setPowerNotify(int powerNotify) throws JposException {
 		printer.setPowerNotify(powerNotify);
 	}
 
-	@Override
+	
 	public int getPowerState() throws JposException {
 		return printer.getPowerState();
 	}
 
-	@Override
+	
 	public String getPredefinedPaymentLines() throws JposException {
 		return decodeString(printer.getPredefinedPaymentLines());
 	}
 
-	@Override
+	
 	public int getPrinterState() throws JposException {
 		return printer.getPrinterState();
 	}
 
-	@Override
+	
 	public int getQuantityDecimalPlaces() throws JposException {
 		return printer.getQuantityDecimalPlaces();
 	}
 
-	@Override
+	
 	public int getQuantityLength() throws JposException {
 		return printer.getQuantityLength();
 	}
 
-	@Override
+	
 	public boolean getRecEmpty() throws JposException {
 		return printer.getRecEmpty();
 	}
 
-	@Override
+	
 	public boolean getRecNearEnd() throws JposException {
 		return printer.getRecNearEnd();
 	}
 
-	@Override
+	
 	public int getRemainingFiscalMemory() throws JposException {
 		return printer.getRemainingFiscalMemory();
 	}
 
-	@Override
+	
 	public String getReservedWord() throws JposException {
 		return decodeString(printer.getReservedWord());
 	}
 
-	@Override
+	
 	public boolean getSlpEmpty() throws JposException {
 		return printer.getSlpEmpty();
 	}
 
-	@Override
+	
 	public boolean getSlpNearEnd() throws JposException {
 		return printer.getSlpNearEnd();
 	}
 
-	@Override
+	
 	public int getSlipSelection() throws JposException {
 		return printer.getSlipSelection();
 	}
 
-	@Override
+	
 	public void setSlipSelection(int slipSelection) throws JposException {
 		printer.setSlipSelection(slipSelection);
 	}
 
-	@Override
+	
 	public boolean getTrainingModeActive() throws JposException {
 		return printer.getTrainingModeActive();
 	}
 
-	@Override
+	
 	public void beginFiscalDocument(int documentAmount) throws JposException {
 		printer.beginFiscalDocument(documentAmount);
 	}
 
-	@Override
+	
 	public void beginFiscalReceipt(boolean printHeader) throws JposException {
 		printer.beginFiscalReceipt(printHeader);
 	}
 
-	@Override
+	
 	public void beginFixedOutput(int station, int documentType)
 			throws JposException {
 		printer.beginFixedOutput(station, documentType);
 	}
 
-	@Override
+	
 	public void beginInsertion(int timeout) throws JposException {
 		printer.beginInsertion(timeout);
 	}
 
-	@Override
+	
 	public void beginItemList(int vatID) throws JposException {
 		printer.beginItemList(vatID);
 	}
 
-	@Override
+	
 	public void beginNonFiscal() throws JposException {
 		printer.beginNonFiscal();
 	}
 
-	@Override
+	
 	public void beginRemoval(int timeout) throws JposException {
 		printer.beginRemoval(timeout);
 	}
 
-	@Override
+	
 	public void beginTraining() throws JposException {
 		printer.beginTraining();
 	}
 
-	@Override
+	
 	public void clearError() throws JposException {
 		printer.clearError();
 	}
 
-	@Override
+	
 	public void clearOutput() throws JposException {
 		printer.clearOutput();
 	}
 
-	@Override
+	
 	public void endFiscalDocument() throws JposException {
 		printer.endFiscalDocument();
 	}
 
-	@Override
+	
 	public void endFiscalReceipt(boolean printHeader) throws JposException {
 		printer.endFiscalReceipt(printHeader);
 	}
 
-	@Override
+	
 	public void endFixedOutput() throws JposException {
 		printer.endFixedOutput();
 	}
 
-	@Override
+	
 	public void endInsertion() throws JposException {
 		printer.endInsertion();
 	}
 
-	@Override
+	
 	public void endItemList() throws JposException {
 		printer.endItemList();
 	}
 
-	@Override
+	
 	public void endNonFiscal() throws JposException {
 		printer.endNonFiscal();
 	}
 
-	@Override
+	
 	public void endRemoval() throws JposException {
 		printer.endRemoval();
 	}
 
-	@Override
+	
 	public void endTraining() throws JposException {
 		printer.endTraining();
 	}
 
-	@Override
+	
 	public void getData(int dataItem, int[] optArgs, String[] data)
 			throws JposException {
 		printer.getData(dataItem, optArgs, data);
 	}
 
-	@Override
+	
 	public void getDate(String[] Date) throws JposException {
 		printer.getDate(Date);
 	}
 
-	@Override
+	
 	public void getTotalizer(int vatID, int optArgs, String[] data)
 			throws JposException {
 		printer.getTotalizer(vatID, optArgs, data);
 	}
 
-	@Override
+	
 	public void getVatEntry(int vatID, int optArgs, int[] vatRate)
 			throws JposException {
 		printer.getVatEntry(vatID, optArgs, vatRate);
 	}
 
-	@Override
+	
 	public void printDuplicateReceipt() throws JposException {
 		printer.printDuplicateReceipt();
 	}
 
-	@Override
+	
 	public void printFiscalDocumentLine(String documentLine)
 			throws JposException {
 		printer.printFiscalDocumentLine(encodeString(documentLine));
 	}
 
-	@Override
+	
 	public void printFixedOutput(int documentType, int lineNumber, String data)
 			throws JposException {
 		printer.printFixedOutput(documentType, lineNumber, encodeString(data));
 	}
 
-	@Override
+	
 	public void printNormal(int station, String data) throws JposException {
 		printer.printNormal(station, encodeString(data));
 	}
 
-	@Override
+	
 	public void printPeriodicTotalsReport(String date1, String date2)
 			throws JposException {
 		printer.printPeriodicTotalsReport(encodeString(date1),
 				encodeString(date2));
 	}
 
-	@Override
+	
 	public void printPowerLossReport() throws JposException {
 		printer.printPowerLossReport();
 	}
 
-	@Override
+	
 	public void printRecItem(String description, long price, int quantity,
 			int vatInfo, long unitPrice, String unitName) throws JposException {
 		printer.printRecItem(encodeString(description), price, quantity,
 				vatInfo, unitPrice, encodeString(unitName));
 	}
 
-	@Override
+	
 	public void printRecItemAdjustment(int adjustmentType, String description,
 			long amount, int vatInfo) throws JposException {
 		printer.printRecItemAdjustment(adjustmentType,
 				encodeString(description), amount, vatInfo);
 	}
 
-	@Override
+	
 	public void printRecMessage(String message) throws JposException {
 		printer.printRecMessage(encodeString(message));
 	}
 
-	@Override
+	
 	public void printRecNotPaid(String description, long amount)
 			throws JposException {
 		printer.printRecNotPaid(encodeString(description), amount);
 	}
 
-	@Override
+	
 	public void printRecRefund(String description, long amount, int vatInfo)
 			throws JposException {
 		printer.printRecRefund(encodeString(description), amount, vatInfo);
 	}
 
-	@Override
+	
 	public void printRecSubtotal(long amount) throws JposException {
 		printer.printRecSubtotal(amount);
 	}
 
-	@Override
+	
 	public void printRecSubtotalAdjustment(int adjustmentType,
 			String description, long amount) throws JposException {
 		printer.printRecSubtotalAdjustment(adjustmentType,
 				encodeString(description), amount);
 	}
 
-	@Override
+	
 	public void printRecTotal(long total, long payment, String description)
 			throws JposException {
 		printer.printRecTotal(total, payment, encodeString(description));
 	}
 
-	@Override
+	
 	public void printRecVoid(String description) throws JposException {
 		printer.printRecVoid(encodeString(description));
 	}
 
-	@Override
+	
 	public void printRecVoidItem(String description, long amount, int quantity,
 			int adjustmentType, long adjustment, int vatInfo)
 			throws JposException {
@@ -1004,28 +1012,28 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 				adjustmentType, adjustment, vatInfo);
 	}
 
-	@Override
+	
 	public void printReport(int reportType, String startNum, String endNum)
 			throws JposException {
 		printer.printReport(reportType, encodeString(startNum), endNum);
 	}
 
-	@Override
+	
 	public void printXReport() throws JposException {
 		printer.printXReport();
 	}
 
-	@Override
+	
 	public void printZReport() throws JposException {
 		printer.printZReport();
 	}
 
-	@Override
+	
 	public void resetPrinter() throws JposException {
 		printer.resetPrinter();
 	}
 
-	@Override
+	
 	public void setDate(String date) throws JposException {
 		printer.setDate(encodeString(date));
 	}
@@ -1046,184 +1054,184 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 		return lines[0];
 	}
 
-	@Override
+	
 	public void setHeaderLine(int lineNumber, String text, boolean doubleWidth)
 			throws JposException {
 		printer.setHeaderLine(lineNumber, encodeString(text), doubleWidth);
 	}
 
-	@Override
+	
 	public void setPOSID(String POSID, String cashierID) throws JposException {
 		printer.setPOSID(encodeString(POSID), encodeString(cashierID));
 	}
 
-	@Override
+	
 	public void setStoreFiscalID(String ID) throws JposException {
 		printer.setStoreFiscalID(encodeString(ID));
 	}
 
-	@Override
+	
 	public void setTrailerLine(int lineNumber, String text, boolean doubleWidth)
 			throws JposException {
 		printer.setTrailerLine(lineNumber, encodeString(text), doubleWidth);
 	}
 
-	@Override
+	
 	public void setVatTable() throws JposException {
 		printer.setVatTable();
 	}
 
-	@Override
+	
 	public void setVatValue(int vatID, String vatValue) throws JposException {
 		printer.setVatValue(vatID, encodeString(vatValue));
 	}
 
-	@Override
+	
 	public void verifyItem(String itemName, int vatID) throws JposException {
 		printer.verifyItem(encodeString(itemName), vatID);
 	}
 
-	@Override
+	
 	public void addDirectIOListener(DirectIOListener l) {
 		printer.addDirectIOListener(l);
 	}
 
-	@Override
+	
 	public void removeDirectIOListener(DirectIOListener l) {
 		printer.removeDirectIOListener(l);
 	}
 
-	@Override
+	
 	public void addErrorListener(ErrorListener l) {
 		printer.addErrorListener(l);
 	}
 
-	@Override
+	
 	public void removeErrorListener(ErrorListener l) {
 		printer.removeErrorListener(l);
 	}
 
-	@Override
+	
 	public void addOutputCompleteListener(OutputCompleteListener l) {
 		printer.addOutputCompleteListener(l);
 	}
 
-	@Override
+	
 	public void removeOutputCompleteListener(OutputCompleteListener l) {
 		printer.removeOutputCompleteListener(l);
 	}
 
-	@Override
+	
 	public void addStatusUpdateListener(StatusUpdateListener l) {
 		printer.addStatusUpdateListener(l);
 	}
 
-	@Override
+	
 	public void removeStatusUpdateListener(StatusUpdateListener l) {
 		printer.removeStatusUpdateListener(l);
 	}
 
 	// BaseControl
 
-	@Override
+	
 	public String getCheckHealthText() throws JposException {
 		return decodeString(printer.getCheckHealthText());
 	}
 
-	@Override
+	
 	public boolean getClaimed() throws JposException {
 		return printer.getClaimed();
 	}
 
-	@Override
+	
 	public String getDeviceControlDescription() {
 		return printer.getDeviceControlDescription();
 	}
 
-	@Override
+	
 	public int getDeviceControlVersion() {
 		return printer.getDeviceControlVersion();
 	}
 
-	@Override
+	
 	public boolean getDeviceEnabled() throws JposException {
 		return printer.getDeviceEnabled();
 	}
 
-	@Override
+	
 	public void setDeviceEnabled(boolean deviceEnabled) throws JposException {
 		printer.setDeviceEnabled(deviceEnabled);
 	}
 
-	@Override
+	
 	public String getDeviceServiceDescription() throws JposException {
 		return decodeString(printer.getDeviceServiceDescription());
 	}
 
-	@Override
+	
 	public int getDeviceServiceVersion() throws JposException {
 		return printer.getDeviceServiceVersion();
 	}
 
-	@Override
+	
 	public boolean getFreezeEvents() throws JposException {
 		return printer.getFreezeEvents();
 	}
 
-	@Override
+	
 	public void setFreezeEvents(boolean freezeEvents) throws JposException {
 		printer.setFreezeEvents(freezeEvents);
 	}
 
-	@Override
+	
 	public String getPhysicalDeviceDescription() throws JposException {
 		return decodeString(printer.getPhysicalDeviceDescription());
 	}
 
-	@Override
+	
 	public String getPhysicalDeviceName() throws JposException {
 		return decodeString(printer.getPhysicalDeviceName());
 	}
 
-	@Override
+	
 	public int getState() {
 		return printer.getState();
 	}
 
-	@Override
+	
 	public boolean getCapPositiveSubtotalAdjustment() throws JposException {
 		return printer.getCapPositiveSubtotalAdjustment();
 	}
 
 	// Methods
 
-	@Override
+	
 	public void claim(int timeout) throws JposException {
 		printer.claim(timeout);
 	}
 
-	@Override
+	
 	public void close() throws JposException {
 		printer.close();
 	}
 
-	@Override
+	
 	public void checkHealth(int level) throws JposException {
 		printer.checkHealth(level);
 	}
 
-	@Override
+	
 	public void directIO(int command, int[] data, Object object)
 			throws JposException {
 		printer.directIO(command, data, object);
 	}
 
-	@Override
+	
 	public void open(String logicalDeviceName) throws JposException {
 		printer.open(encodeString(logicalDeviceName));
 	}
 
-	@Override
+	
 	public void release() throws JposException {
 		printer.release();
 	}
@@ -1676,7 +1684,7 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 		directIO(SmFptrConst.SMFPTR_DIO_WRITE_CASHIER_NAME, null, lines);
 	}
 
-	// cutMode: 0  full cut, 1  partial cut
+	// cutMode: 0 ? full cut, 1 ? partial cut
 	public void cutPaper(int cutMode) throws JposException {
 		int[] data = new int[1];
 		data[0] = cutMode;
@@ -1691,21 +1699,21 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 		return getParameter(SmFptrConst.SMFPTR_DIO_PARAM_FONT_NUMBER);
 	}
 
-	@Override
+	
 	public void printRecItemVoid(String description, long price, int quantity,
 			int vatInfo, long unitPrice, String unitName) throws JposException {
 		printer.printRecItemVoid(description, price, quantity, vatInfo,
 				unitPrice, unitName);
 	}
 
-	@Override
+	
 	public void printRecItemAdjustmentVoid(int adjustmentType,
 			String description, long amount, int vatInfo) throws JposException {
 		printer.printRecItemAdjustmentVoid(adjustmentType, description, amount,
 				vatInfo);
 	}
 
-	@Override
+	
 	public void printRecItemRefund(String description, long amount,
 			int quantity, int vatInfo, long unitAmount, String unitName)
 			throws JposException {
@@ -1713,7 +1721,7 @@ public class ShtrihFiscalPrinter113 implements BaseControl,
 				unitAmount, unitName);
 	}
 
-	@Override
+	
 	public void printRecItemRefundVoid(String description, long amount,
 			int quantity, int vatInfo, long unitAmount, String unitName)
 			throws JposException {

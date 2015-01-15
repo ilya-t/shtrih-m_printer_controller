@@ -13,17 +13,17 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /****************************************************************************
- * Close receipt Command: 85H. Length: 71 bytes.  Operator password (4 bytes)
- * Cash Payment value (5 bytes) 00000000009999999999  Payment Type 2 value (5
- * bytes) 00000000009999999999  Payment Type 3 value (5 bytes)
- * 00000000009999999999  Payment Type 4 value (5 bytes) 00000000009999999999
- *  Receipt Percentage Discount/Surcharge Value 0 to 99,99 % (2 bytes with
- * sign) 99999999, surcharge if value is negative  Tax 1 (1 byte) 0  no
- * tax, 14  tax ID  Tax 2 (1 byte) 0  no tax, 14  tax ID  Tax 3
- * (1 byte) 0  no tax, 14  tax ID  Tax 4 (1 byte) 0  no tax,
- * 14  tax ID  Text (40 bytes) Answer: 85H. Length: 8 bytes.  Result
- * Code (1 byte)  Operator index number (1 byte) 130  Change value (5 bytes)
- * 00000000009999999999
+ * Close receipt Command: 85H. Length: 71 bytes. ? Operator password (4 bytes) ?
+ * Cash Payment value (5 bytes) 0000000000?9999999999 ? Payment Type 2 value (5
+ * bytes) 0000000000?9999999999 ? Payment Type 3 value (5 bytes)
+ * 0000000000?9999999999 ? Payment Type 4 value (5 bytes) 0000000000?9999999999
+ * ? Receipt Percentage Discount/Surcharge Value 0 to 99,99 % (2 bytes with
+ * sign) ?9999?9999, surcharge if value is negative ? Tax 1 (1 byte) ?0? ? no
+ * tax, ?1???4? ? tax ID ? Tax 2 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 3
+ * (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 4 (1 byte) ?0? ? no tax,
+ * ?1???4? ? tax ID ? Text (40 bytes) Answer: 85H. Length: 8 bytes. ? Result
+ * Code (1 byte) ? Operator index number (1 byte) 1?30 ? Change value (5 bytes)
+ * 0000000000?9999999999
  ****************************************************************************/
 public final class EndFiscalReceipt extends PrinterCommand {
     // in

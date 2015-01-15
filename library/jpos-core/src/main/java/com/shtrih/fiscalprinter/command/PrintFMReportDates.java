@@ -14,14 +14,14 @@ package com.shtrih.fiscalprinter.command;
  */
 /**
  * **************************************************************************
- * Print periodic daily totals fiscal report Command: 66H. Length: 12 bytes.
- * Tax Officer password (4 bytes)  Report type (1 byte) 0  short, 1  full
- *  Date of first daily totals record in FM (3 bytes) DD-MM-YY  Date of last
- * daily totals record in FM (3 bytes) DD-MM-YY Answer: 66H. Length: 12 bytes.
- * Result Code (1 byte)  Date of first daily totals record in FM (3 bytes)
- * DD-MM-YY  Date of last daily totals record in FM (3 bytes) DD-MM-YY  Number
- * of first daily totals record in FM (2 bytes) 00002100  Number of last daily
- * totals record in FM (2 bytes) 00002100
+ * Print periodic daily totals fiscal report Command: 66H. Length: 12 bytes. ?
+ * Tax Officer password (4 bytes) ? Report type (1 byte) ?0? ? short, ?1? ? full
+ * ? Date of first daily totals record in FM (3 bytes) DD-MM-YY ? Date of last
+ * daily totals record in FM (3 bytes) DD-MM-YY Answer: 66H. Length: 12 bytes. ?
+ * Result Code (1 byte) ? Date of first daily totals record in FM (3 bytes)
+ * DD-MM-YY ? Date of last daily totals record in FM (3 bytes) DD-MM-YY ? Number
+ * of first daily totals record in FM (2 bytes) 0000?2100 ? Number of last daily
+ * totals record in FM (2 bytes) 0000?2100
  * **************************************************************************
  */
 public final class PrintFMReportDates extends PrinterCommand {

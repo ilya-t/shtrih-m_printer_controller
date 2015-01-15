@@ -14,10 +14,10 @@ package com.shtrih.fiscalprinter.command;
  */
 /****************************************************************************
  * Get Data Of Daily Totals Report In Daily Totals Number Range From electronic
- * journal Command: B7H. Length: 11 bytes.  System Administrator password (4
- * bytes) 30  Report type (1 byte) 0  short, 1  full  Department number
- * (1 byte) 116  First day number (2 bytes) 00002100  Last day number (2
- * bytes) 00002100 Answer: B7H. Length: 18 bytes.  Result Code (1 byte)  ECR
+ * journal Command: B7H. Length: 11 bytes. ? System Administrator password (4
+ * bytes) 30 ? Report type (1 byte) ?0? ? short, ?1? ? full ? Department number
+ * (1 byte) 1?16 ? First day number (2 bytes) 0000?2100 ? Last day number (2
+ * bytes) 0000?2100 Answer: B7H. Length: 18 bytes. ? Result Code (1 byte) ? ECR
  * model (16 bytes) string of WIN1251 code page characters NOTE: Command
  * execution may take up to 150 seconds.
  ****************************************************************************/

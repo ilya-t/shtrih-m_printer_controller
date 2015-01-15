@@ -1,7 +1,7 @@
 /*
  * DIOExecuteCommandStr.java
  *
- * Created on 14  2010 ., 11:23
+ * Created on 14 ??? 2010 ?., 11:23
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

@@ -14,8 +14,8 @@ package com.shtrih.fiscalprinter.command;
  */
 /****************************************************************************
  * Get Data Of electronic journal Daily Totals Report Command: BAH. Length: 7
- * bytes.  System Administrator password (4 bytes) 30  Number of daily totals
- * (2 bytes) 00002100 Answer: BAH. Length: 18 bytes.  Result Code (1 byte)
+ * bytes. ? System Administrator password (4 bytes) 30 ? Number of daily totals
+ * (2 bytes) 0000?2100 Answer: BAH. Length: 18 bytes. ? Result Code (1 byte) ?
  * ECR model (16 bytes) string of WIN1251 code page characters NOTE: Command
  * execution may take up to 40 seconds.
  ****************************************************************************/

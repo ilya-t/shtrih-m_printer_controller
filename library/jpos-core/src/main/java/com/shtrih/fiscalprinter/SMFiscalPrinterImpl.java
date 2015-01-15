@@ -31,7 +31,10 @@ import com.shtrih.fiscalprinter.table.PrinterFields;
 import com.shtrih.fiscalprinter.table.PrinterTable;
 import com.shtrih.fiscalprinter.table.PrinterTables;
 import com.shtrih.jpos.fiscalprinter.FptrParameters;
+import com.shtrih.jpos.fiscalprinter.PrinterImage;
 import com.shtrih.jpos.fiscalprinter.PrinterImages;
+import com.shtrih.jpos.fiscalprinter.ReceiptImage;
+import com.shtrih.jpos.fiscalprinter.ReceiptImages;
 import com.shtrih.jpos.fiscalprinter.SmFptrConst;
 import com.shtrih.printer.ncr7167.CommandContext;
 import com.shtrih.printer.ncr7167.NCR7167Printer;
@@ -69,6 +72,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	private final PrinterPort port;
 	private final FptrParameters params;
 	private final PrinterImages printerImages = new PrinterImages();
+	private final ReceiptImages receiptImages = new ReceiptImages();
 	private int resultCode = 0;
 	private NCR7167Printer escPrinter = new NCR7167Printer(null);
 
@@ -211,23 +215,16 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 				+ command.getText();
 		logger.debug(text);
 
-		command.setTimeout(getCommandTimeout(command.getCode()));
+		int timeout = getCommandTimeout(command.getCode());
+		command.setTimeout(timeout);
+		command.setRepeatNeeded(false);
 		while (true) {
 			deviceExecute(command);
 			resultCode = command.getResultCode();
-			switch (resultCode) {
-			case PrinterError.E_PRINTER_PREVCOMMAND:
-				waitForPrinting();
-				break;
-
-			case PrinterError.E_PRINTER_WAITPRINT:
-				continuePrint();
-				waitForPrinting();
-				break;
-
-			default:
+			if (!command.getIsRepeatable())
 				return resultCode;
-			}
+			if (!command.getRepeatNeeded())
+				return resultCode;
 		}
 	}
 
@@ -365,7 +362,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public ReadLongStatus readLongStatus() throws Exception {
 		logger.debug("readLongStatus");
 		ReadLongStatus command = new ReadLongStatus();
-                command.setPassword(usrPassword);
+		command.setPassword(usrPassword);
 		executeCommand(command);
 		if (command.isSucceeded()) {
 			longStatus = command.getStatus();
@@ -581,8 +578,8 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public int readTableInfo(int tableNumber, Object[] out) throws Exception {
 		logger.debug("readTableInfo");
 		ReadTableInfo command = new ReadTableInfo();
-                command.setPassword(sysPassword);
-                command.setTableNumber(tableNumber);
+		command.setPassword(sysPassword);
+		command.setTableNumber(tableNumber);
 
 		out[0] = command;
 		return executeCommand(command);
@@ -609,8 +606,8 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public PrintCashOut printCashOut(long sum) throws Exception {
 		logger.debug("printCashOut");
 		PrintCashOut command = new PrintCashOut();
-                command.setPassword(usrPassword);
-                command.setAmount(sum);
+		command.setPassword(usrPassword);
+		command.setAmount(sum);
 		execute(command);
 		return command;
 	}
@@ -647,7 +644,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public VoidFiscalReceipt cancelReceipt() throws Exception {
 		logger.debug("cancelReceipt");
 		VoidFiscalReceipt command = new VoidFiscalReceipt();
-                command.setPassword(usrPassword);
+		command.setPassword(usrPassword);
 		execute(command);
 		return command;
 	}
@@ -656,7 +653,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public VoidFiscalReceipt cancelReceipt(int password) throws Exception {
 		logger.debug("cancelReceipt");
 		VoidFiscalReceipt command = new VoidFiscalReceipt();
-                command.setPassword(password);
+		command.setPassword(password);
 		execute(command);
 		return command;
 	}
@@ -739,10 +736,10 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 			EJDate date2, int reportType) throws Exception {
 		logger.debug("printEJDayReportOnDates");
 		PrintEJDayReportOnDates command = new PrintEJDayReportOnDates();
-                command.setPassword(sysPassword);
-                command.setReportType(reportType);
-                command.setDate1(date1);
-                command.setDate2(date2);
+		command.setPassword(sysPassword);
+		command.setReportType(reportType);
+		command.setDate1(date1);
+		command.setDate2(date2);
 		execute(command);
 		return command;
 	}
@@ -752,10 +749,10 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 			PrinterDate date2, int reportType) throws Exception {
 		logger.debug("printFMReportDates");
 		PrintFMReportDates command = new PrintFMReportDates();
-                command.setPassword(taxPassword);
-                command.setReportType(reportType);
-                command.setDate1(date1);
-                command.setDate2(date2);
+		command.setPassword(taxPassword);
+		command.setReportType(reportType);
+		command.setDate1(date1);
+		command.setDate2(date2);
 		execute(command);
 		return command;
 	}
@@ -765,10 +762,10 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 			int reportType) throws Exception {
 		logger.debug("printEJReportDays");
 		PrintEJDayReportOnDays command = new PrintEJDayReportOnDays();
-                command.setPassword(sysPassword);
-                command.setReportType(reportType);
-                command.setDayNumber1(day1);
-                command.setDayNumber2(day2);
+		command.setPassword(sysPassword);
+		command.setReportType(reportType);
+		command.setDayNumber1(day1);
+		command.setDayNumber2(day2);
 		execute(command);
 		return command;
 	}
@@ -778,10 +775,10 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 			int reportType) throws Exception {
 		logger.debug("printFMReportDays");
 		PrintFMReportDays command = new PrintFMReportDays();
-                command.setPassword(taxPassword);
-                command.setReportType(reportType);
-                command.setSession1(day1);
-                command.setSession2(day2);
+		command.setPassword(taxPassword);
+		command.setReportType(reportType);
+		command.setSession1(day1);
+		command.setSession2(day2);
 		execute(command);
 		return command;
 	}
@@ -820,8 +817,8 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public PrintVoidItem printVoidItem(PriceItem item) throws Exception {
 		logger.debug("printVoidItem");
 		PrintVoidItem command = new PrintVoidItem();
-                command.setPassword(usrPassword);
-                command.setItem(item);
+		command.setPassword(usrPassword);
+		command.setItem(item);
 		execute(command);
 		return command;
 	}
@@ -843,8 +840,8 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 		logger.debug("printVoidDiscount");
 
 		PrintVoidDiscount command = new PrintVoidDiscount();
-                command.setPassword(usrPassword);
-                command.setItem(item);
+		command.setPassword(usrPassword);
+		command.setItem(item);
 		execute(command);
 		return command;
 	}
@@ -864,8 +861,8 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	public PrintVoidCharge printVoidCharge(AmountItem item) throws Exception {
 		logger.debug("printVoidCharge");
 		PrintVoidCharge command = new PrintVoidCharge();
-                command.setPassword(usrPassword);
-                command.setItem(item);
+		command.setPassword(usrPassword);
+		command.setItem(item);
 		execute(command);
 		return command;
 	}
@@ -885,7 +882,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 		logger.debug("printXReport");
 
 		PrintXReport command = new PrintXReport();
-                command.setPassword(sysPassword);
+		command.setPassword(sysPassword);
 		execute(command);
 		return command;
 	}
@@ -895,7 +892,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 		logger.debug("printZReport");
 
 		PrintZReport command = new PrintZReport();
-                command.setPassword(sysPassword);
+		command.setPassword(sysPassword);
 		execute(command);
 		return command;
 	}
@@ -1170,7 +1167,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	@Override
 	public boolean tryCancelReceipt(int password) throws Exception {
 		VoidFiscalReceipt command = new VoidFiscalReceipt();
-                command.setPassword(password);
+		command.setPassword(password);
 		if (executeCommand(command) == 0x59) {
 			return false;
 		} else {
@@ -1347,8 +1344,8 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 		int tableNumber = 1;
 		while (true) {
 			ReadTableInfo command = new ReadTableInfo();
-                        command.setPassword(sysPassword);
-                        command.setTableNumber(tableNumber);
+			command.setPassword(sysPassword);
+			command.setTableNumber(tableNumber);
 			int result = executeCommand(command);
 			if (result == SMFP_EFPTR_INVALID_TABLE) {
 				break;
@@ -1381,20 +1378,7 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 
 	@Override
 	public PrinterStatus readShortPrinterStatus() throws Exception {
-		ShortPrinterStatus status = readShortStatus();
-		int mode = status.getMode();
-		int submode = status.getSubmode();
-		int flags = status.getFlags();
-		int operatorNumber = status.getOperatorNumber();
-
-		loggerDebugMode(mode, submode);
-                
-                PrinterStatus printerStatus = new PrinterStatus();
-                printerStatus.setMode(mode);
-                printerStatus.setSubmode(submode);
-                printerStatus.setFlags(flags);
-                printerStatus.setOperator(operatorNumber);
-		return printerStatus;
+		return readShortStatus().getPrinterStatus();
 	}
 
 	@Override
@@ -1407,12 +1391,12 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 		int operatorNumber = status.getOperatorNumber();
 
 		loggerDebugMode(mode, submode);
-                
-                PrinterStatus printerStatus = new PrinterStatus();
-                printerStatus.setMode(mode);
-                printerStatus.setSubmode(submode);
-                printerStatus.setFlags(flags);
-                printerStatus.setOperator(operatorNumber);
+
+		PrinterStatus printerStatus = new PrinterStatus();
+		printerStatus.setMode(mode);
+		printerStatus.setSubmode(submode);
+		printerStatus.setFlags(flags);
+		printerStatus.setOperator(operatorNumber);
 		return printerStatus;
 	}
 
@@ -1472,10 +1456,9 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 	}
 
 	@Override
-	public void updateModel() throws Exception 
-        {
+	public void updateModel() throws Exception {
 		model = selectPrinterModel(getDeviceMetrics());
-                readFonts();
+		readFonts();
 	}
 
 	public PrinterModel selectPrinterModel(DeviceMetrics metrics)
@@ -1534,6 +1517,19 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 			if (getModel().getCapGraphics()) {
 				loadGraphics(lineNumber, data);
 			}
+		}
+	}
+
+	@Override
+	public void printImage(PrinterImage image) throws Exception {
+		if (image == null) {
+			return;
+		}
+		loadImage(image);
+		if (getModel().getModelID() == PrinterConst.PRINTER_MODEL_SHTRIH_M_FRK) {
+			printGraphics(image.getFirstLine() + 1, image.getLastLine() + 1);
+		} else {
+			printGraphics(image.getFirstLine(), image.getLastLine());
 		}
 	}
 
@@ -1961,27 +1957,113 @@ public class SMFiscalPrinterImpl implements SMFiscalPrinter, PrinterConst {
 		}
 		return (String[]) (lines.toArray(new String[0]));
 	}
-        
-        public void readFonts() throws Exception
-        {
-            PrinterFonts fonts = new PrinterFonts();
-            int fontNumber = 1;
-            int fontCount = 7;
-            while (fontNumber <= fontCount)
-            {
-                ReadFontMetrics command = new ReadFontMetrics();
-                command.setPassword(sysPassword);
-                command.setFont(fontNumber);
-                if (executeCommand(command) != 0) break;
-                fonts.add(fontNumber, command.getCharWidth(), command.getCharHeight());
-                fontNumber++;
-                fontCount = command.getFontCount();
-            }
-            if (fonts.size() > 0){
-                getModel().setFonts(fonts);
-            }
-        }
-        
-        
-        
+
+	public void readFonts() throws Exception {
+		PrinterFonts fonts = new PrinterFonts();
+		int fontNumber = 1;
+		int fontCount = 8;
+		while (fontNumber <= fontCount) {
+			ReadFontMetrics command = new ReadFontMetrics();
+			command.setPassword(sysPassword);
+			command.setFont(fontNumber);
+			if (executeCommand(command) != 0)
+				break;
+			fonts.add(fontNumber, command.getCharWidth(),
+					command.getCharHeight());
+			fontNumber++;
+			fontCount = command.getFontCount();
+		}
+		if (fonts.size() > 0) {
+			getModel().setFonts(fonts);
+		}
+	}
+
+	@Override
+	public ReceiptImages getReceiptImages() {
+		return receiptImages;
+	}
+
+	@Override
+	public void printReceiptImage(int position) throws Exception {
+		for (int i = 0; i < receiptImages.size(); i++) {
+			ReceiptImage image = receiptImages.get(i);
+			if (image.valid(position)) {
+				PrinterImage printerImage = printerImages.get(image
+						.getImageIndex());
+				printImage(printerImage);
+			}
+		}
+	}
+
+	@Override
+	public PrinterImage getPrinterImage(int position) throws Exception {
+		ReceiptImage image = receiptImages.imageByPosition(position);
+		if (image != null) {
+			int index = image.getImageIndex();
+			if (getPrinterImages().validIndex(index)) {
+				return getPrinterImages().get(index);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public void printGraphics2(int line1, int line2) throws Exception {
+		if (PrintGraphics.validLines(line1, line2)
+				&& getModel().getCapGraphics()) {
+			printGraphics(line1, line2);
+		} else {
+			if (getModel().getCapGraphicsEx()
+					&& PrintGraphicsEx.validLines(line1, line2)) {
+				printGraphicsEx(line1, line2);
+			}
+		}
+	}
+
+	@Override
+	public void loadImage(PrinterImage image) throws Exception {
+		if (!image.getIsLoaded()) {
+			if (image.getFileName().equals("")) {
+				return;
+			}
+			image.readFile();
+			getPrinterImages().add(image);
+			loadImage2(image);
+			// saveProperties(); !!!
+		}
+	}
+
+	public void loadImage2(PrinterImage image) throws Exception {
+		if (image.getIsLoaded()) {
+			return;
+		}
+
+		logger.debug("loadImage");
+
+		if (getParams().centerImage) {
+			image.centerImage(getModel().getMaxGraphicsWidth());
+		}
+		// check max image width
+		if (image.getWidth() > getModel().getMaxGraphicsWidth()) {
+			throw new Exception(
+					Localizer.getString(Localizer.InvalidImageWidth) + ", "
+							+ String.valueOf(image.getWidth()) + " > "
+							+ String.valueOf(getModel().getMaxGraphicsWidth()));
+		}
+		// check max image height
+		int imageHeight = image.getFirstLine() + image.getHeight() - 1;
+		if (imageHeight > getModel().getMaxGraphicsHeight()) {
+			throw new Exception(
+					Localizer.getString(Localizer.InvalidImageHeight) + ", "
+							+ String.valueOf(imageHeight) + " > "
+							+ String.valueOf(getModel().getMaxGraphicsHeight()));
+		}
+		// write image to device
+		for (int i = 0; i < image.getHeight(); i++) {
+			loadGraphics(image.getFirstLine() + i, image.getHeight(),
+					image.lines[i]);
+		}
+		image.setIsLoaded(true);
+	}
+
 }

@@ -1,7 +1,7 @@
 /*
  * DIOReadDrawerState.java
  *
- * Created on 4  2010 ., 15:09
+ * Created on 4 ???? 2010 ?., 15:09
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

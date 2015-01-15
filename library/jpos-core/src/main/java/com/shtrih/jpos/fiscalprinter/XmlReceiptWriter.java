@@ -26,17 +26,15 @@ public class XmlReceiptWriter {
     }
 
     public void save(ReceiptReport report, String fileName) {
-        logger.debug("save");
         try {
             Document doc = XmlUtils.newDocument();
             File file = new File(fileName);
-            if (file.exists()) {
-                logger.debug("load");
+            if (file.exists()) 
+            {
                 doc = XmlUtils.parse(file);
             }
             add(report, doc);
             XmlUtils.save(doc, fileName);
-            logger.debug("save: OK");
         } catch (Exception e) {
             logger.error("save", e);
         }
@@ -72,11 +70,9 @@ public class XmlReceiptWriter {
     }
 
     public void add(ReceiptReport report, Document doc) throws Exception {
-        logger.debug("add");
 
         Node root = doc.getDocumentElement();
         if (root == null) {
-            logger.debug("root == null");
             root = doc.createElement("root");
             doc.appendChild(root);
         }

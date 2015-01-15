@@ -1,7 +1,7 @@
 /*
  * PrinterModelShtrih950K.java
  *
- * Created on 13  2010 ., 12:22
+ * Created on 13 ???? 2010 ?., 12:22
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

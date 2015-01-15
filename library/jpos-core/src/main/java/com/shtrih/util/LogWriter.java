@@ -1,7 +1,7 @@
 /*
  * LogWriter.java
  *
- * Created on 13  2010 ., 13:25
+ * Created on 13 ???? 2010 ?., 13:25
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

@@ -17,13 +17,13 @@ package com.shtrih.fiscalprinter.command;
  Print Daily Totals Report In Dates Range From electronic journal
 
  Command:  A2H. Length: 12 bytes.
- 	System Administrator password (4 bytes) 30
- 	Report type (1 byte) 0  short, 1  full
- 	Date of first daily totals in range (3 bytes) DD-MM-YY
- 	Date of last daily totals in range (3 bytes) DD-MM-YY
+ ?	System Administrator password (4 bytes) 30
+ ?	Report type (1 byte) ?0? ? short, ?1? ? full
+ ?	Date of first daily totals in range (3 bytes) DD-MM-YY
+ ?	Date of last daily totals in range (3 bytes) DD-MM-YY
 
  Answer:		A2H. Length: 2 bytes.
- 	Result Code (1 byte)
+ ?	Result Code (1 byte)
 
  NOTE: Command execution may take up to 100 seconds.
 

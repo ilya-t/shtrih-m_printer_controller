@@ -15,13 +15,13 @@ import com.shtrih.util.MethodParameter;
  * @author V.Kravtsov
  */
 /****************************************************************************
- * Get Dump Command: 01H. Length: 6 bytes.  Service Support Center specialist
+ * Get Dump Command: 01H. Length: 6 bytes. ? Service Support Center specialist
  * password, or System Administrator password in case Service Support Center
- * specialist password is not defined (4 bytes)  Fiscal Printer unit code (1
- * byte)  01  Fiscal Memory 1  02  Fiscal Memory 1  03  Clock  04
- * Nonvolatile memory  05  Fiscal Memory processor  06  Fiscal Printer ROM
- * 07  Fiscal Printer RAM Answer: 01H. Length: 4 bytes.  Result Code (1 byte)
- *  Quantity of data blocks (2 bytes)
+ * specialist password is not defined (4 bytes) ? Fiscal Printer unit code (1
+ * byte) ? 01 ? Fiscal Memory 1 ? 02 ? Fiscal Memory 1 ? 03 ? Clock ? 04 ?
+ * Nonvolatile memory ? 05 ? Fiscal Memory processor ? 06 ? Fiscal Printer ROM ?
+ * 07 ? Fiscal Printer RAM Answer: 01H. Length: 4 bytes. ? Result Code (1 byte)
+ * ? Quantity of data blocks (2 bytes)
  ****************************************************************************/
 public final class BeginDump extends PrinterCommand {
     // in

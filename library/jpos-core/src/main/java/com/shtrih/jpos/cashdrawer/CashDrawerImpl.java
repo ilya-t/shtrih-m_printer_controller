@@ -290,7 +290,7 @@ public class CashDrawerImpl extends DeviceService implements
 
 	@Override
 	public int getDeviceServiceVersion() throws JposException {
-		int deviceServiceVersion = deviceVersion113 + 172;
+		int deviceServiceVersion = deviceVersion113 + 186;
 		logger.debug("getDeviceServiceVersion: "
 				+ String.valueOf(deviceServiceVersion));
 		return deviceServiceVersion;
@@ -441,7 +441,7 @@ public class CashDrawerImpl extends DeviceService implements
 				}
 			}
 			port = PrinterPortFactory.createInstance(fptrParams);
-			device = new PrinterProtocol_1(port, null);
+			device = new PrinterProtocol_1(port);
 			printer = new SMFiscalPrinterImpl(port, device, fptrParams);
 			statistics.load(fptrParams.statisticFileName);
 			device.setByteTimeout(fptrParams.byteTimeout);

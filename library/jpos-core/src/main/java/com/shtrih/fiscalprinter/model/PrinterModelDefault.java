@@ -655,4 +655,5 @@ public class PrinterModelDefault implements PrinterModel {
     public void setFonts(PrinterFonts fonts) throws Exception {
         this.fonts = fonts;
     }
+    
 }

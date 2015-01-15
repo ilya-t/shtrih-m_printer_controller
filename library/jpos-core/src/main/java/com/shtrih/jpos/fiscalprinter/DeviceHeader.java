@@ -1,7 +1,11 @@
 package com.shtrih.jpos.fiscalprinter;
 
+import java.util.Vector;
+
 import jpos.JposConst;
 import jpos.JposException;
+
+import org.apache.log4j.Logger;
 
 import com.shtrih.fiscalprinter.SMFiscalPrinter;
 import com.shtrih.fiscalprinter.command.PrinterConst;
@@ -10,20 +14,50 @@ import com.shtrih.util.Localizer;
 
 public class DeviceHeader implements PrinterHeader {
 
-	private int count = 0;
+	private final SMFiscalPrinter printer;
+	private final Vector header = new Vector();
+	private final Vector trailer = new Vector();
+	private static Logger logger = Logger.getLogger(DeviceHeader.class);
 
-	public DeviceHeader() {
+	public DeviceHeader(SMFiscalPrinter printer) {
+		this.printer = printer;
 	}
 
-        public void setCount(int count){
-            this.count = count;
-        }
-        
-        public void clear(){
-        }
-        
 	@Override
-	public void initDevice(SMFiscalPrinter printer) throws Exception {
+	public int getNumHeaderLines() throws Exception {
+		return printer.getModel().getNumHeaderLines();
+	}
+
+	@Override
+	public int getNumTrailerLines() throws Exception {
+		return printer.getModel().getNumTrailerLines();
+	}
+
+	// numHeaderLines for device cannot be changed
+	@Override
+	public void setNumHeaderLines(int numHeaderLines) throws Exception {
+	}
+
+	// numTrailerLines for device cannot be changed
+	@Override
+	public void setNumTrailerLines(int numTrailerLines) throws Exception {
+	}
+
+	@Override
+	public void initDevice() throws Exception {
+		logger.debug("initDevice");
+
+		int numHeaderLines = printer.getModel().getNumHeaderLines();
+		header.clear();
+		for (int i = 1; i <= numHeaderLines; i++) {
+			header.add(new HeaderLine());
+		}
+		int numTrailerLines = printer.getModel().getNumTrailerLines();
+		trailer.clear();
+		for (int i = 1; i <= numTrailerLines; i++) {
+			trailer.add(new HeaderLine());
+		}
+
 		String[] fieldValue = new String[1];
 		ReadTableInfo tableStructure = printer
 				.readTableInfo(PrinterConst.SMFP_TABLE_TEXT);
@@ -47,55 +81,70 @@ public class DeviceHeader implements PrinterHeader {
 	}
 
 	@Override
-	// doubleWidth parameter ignored
-	public void setLine(int lineNumber, String text, boolean doubleWidth)
-			throws Exception {
-	}
-
-	public void addLine(String text, boolean doubleWidth)
-			throws Exception{
-        }
-        
-	public void writeLine(SMFiscalPrinter printer, int lineNumber, String text, boolean doubleWidth)
-			throws Exception {
-		checkLineNumber(lineNumber);
-		int table = printer.getModel().getHeaderTableNumber();
-		int row = printer.getModel().getHeaderTableRow();
-		printer.writeTable(table, row, lineNumber, text);
-	}
-        
-	@Override
-	public int size() {
-		return count;
+	public HeaderLine getHeaderLine(int number) throws Exception {
+		checkHeaderLineNumber(number);
+		return (HeaderLine) header.get(number - 1);
 	}
 
 	@Override
-	public boolean validNumber(int number) throws Exception {
-		return ((number >= 1) && (number <= count));
+	public HeaderLine getTrailerLine(int number) throws Exception {
+		checkTrailerLineNumber(number);
+		return (HeaderLine) trailer.get(number - 1);
 	}
 
-	public void checkLineNumber(int lineNumber) throws Exception {
-		if (!validNumber(lineNumber)) {
+	public void checkHeaderLineNumber(int number) throws Exception {
+		if ((number < 1) || (number > getNumHeaderLines())) {
+			throw new JposException(JposConst.JPOS_E_ILLEGAL,
+					Localizer.getString(Localizer.InvalidLineNumber));
+		}
+	}
+
+	public void checkTrailerLineNumber(int number) throws Exception {
+		if ((number < 1) || (number > getNumTrailerLines())) {
 			throw new JposException(JposConst.JPOS_E_ILLEGAL,
 					Localizer.getString(Localizer.InvalidLineNumber));
 		}
 	}
 
 	@Override
-	public int print(SMFiscalPrinter printer) throws Exception 
-        {
-            return printer.getModel().getHeaderHeight();
+	public void setHeaderLine(int number, String text, boolean doubleWidth)
+			throws Exception {
+		checkHeaderLineNumber(number);
+		int table = printer.getModel().getHeaderTableNumber();
+		int row = printer.getModel().getHeaderTableRow();
+		printer.writeTable(table, row + number - 1, 1, text);
+		header.set(number - 1, new HeaderLine(text, doubleWidth));
 	}
 
-	// printed automatically by fiscal printer
 	@Override
-	public int print(SMFiscalPrinter printer, int num1, int num2) throws Exception 
-        {
-            return printer.getModel().getHeaderHeight();
-        }
+	public void setTrailerLine(int number, String text, boolean doubleWidth)
+			throws Exception {
+		checkTrailerLineNumber(number);
+		int table = printer.getModel().getTrailerTableNumber();
+		int row = printer.getModel().getTrailerTableRow();
+		printer.writeTable(table, row + number - 1, 1, text);
+		trailer.set(number - 1, new HeaderLine(text, doubleWidth));
+	}
 
 	@Override
-	public HeaderLine get(int index) throws Exception {
-		return null;
+	public void save(XmlPropWriter writer) throws Exception {
+	}
+
+	@Override
+	public void load(XmlPropReader reader) throws Exception {
+	}
+
+	@Override
+	public void beginDocument(String additionalHeader, String additionalTrailer)
+			throws Exception {
+		if (additionalHeader.length() > 0) {
+			printer.printText(PrinterConst.SMFP_STATION_REC, additionalHeader,
+					printer.getParams().getFont());
+		}
+	}
+
+	@Override
+	public void endDocument(String additionalHeader, String additionalTrailer)
+			throws Exception {
 	}
 }

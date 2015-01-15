@@ -1,7 +1,7 @@
 /*
  * JposExceptionHandler.java
  *
- * Created on 14  2010 ., 17:11
+ * Created on 14 ??????? 2010 ?., 17:11
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

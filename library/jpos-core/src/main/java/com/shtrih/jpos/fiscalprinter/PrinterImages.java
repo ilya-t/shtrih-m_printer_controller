@@ -1,7 +1,7 @@
 /*
  * PrinterImages.java
  *
- * Created on 12  2009 ., 12:44
+ * Created on 12 ?????? 2009 ?., 12:44
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

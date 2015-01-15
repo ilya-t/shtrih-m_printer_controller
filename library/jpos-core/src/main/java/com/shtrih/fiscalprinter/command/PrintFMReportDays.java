@@ -15,13 +15,13 @@ package com.shtrih.fiscalprinter.command;
 /**
  * **************************************************************************
  * Print fiscal report for daily totals numbers range Command: 67H. Length: 10
- * bytes.  Tax Officer password (4 bytes)  Report type (1 byte) 0  short,
- * 1  full  Day number of first daily totals record in FM (2 bytes)
- * 00002100  Day number of last daily totals record in FM (2 bytes) 00002100
- * Answer: 67H. Length: 12 bytes.  Result Code (1 byte)  Date of first daily
- * totals record in FM (3 bytes) DD-MM-YY  Date of last daily totals record in
- * FM (3 bytes) DD-MM-YY  Number of first daily totals record in FM (2 bytes)
- * 00002100  Number of last daily totals record in FM (2 bytes) 00002100
+ * bytes. ? Tax Officer password (4 bytes) ? Report type (1 byte) ?0? ? short,
+ * ?1? ? full ? Day number of first daily totals record in FM (2 bytes)
+ * 0000?2100 ? Day number of last daily totals record in FM (2 bytes) 0000?2100
+ * Answer: 67H. Length: 12 bytes. ? Result Code (1 byte) ? Date of first daily
+ * totals record in FM (3 bytes) DD-MM-YY ? Date of last daily totals record in
+ * FM (3 bytes) DD-MM-YY ? Number of first daily totals record in FM (2 bytes)
+ * 0000?2100 ? Number of last daily totals record in FM (2 bytes) 0000?2100
  ***************************************************************************
  */
 public final class PrintFMReportDays extends PrinterCommand {

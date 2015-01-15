@@ -1,7 +1,7 @@
 /*
  * DIOReadPaymentName.java
  *
- * Created on 23  2009 ., 14:01
+ * Created on 23 ??????? 2009 ?., 14:01
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

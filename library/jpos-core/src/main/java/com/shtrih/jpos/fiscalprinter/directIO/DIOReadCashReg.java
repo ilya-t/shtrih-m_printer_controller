@@ -1,7 +1,7 @@
 /*
  * DIOReadCashReg.java
  *
- * Created on 11  2010 ., 16:42
+ * Created on 11 ???? 2010 ?., 16:42
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

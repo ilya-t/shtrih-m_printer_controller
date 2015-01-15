@@ -15,14 +15,14 @@ package com.shtrih.fiscalprinter.command;
  */
 
 /****************************************************************************
- * Standard Discount/Surcharge On Slip Command: 75H. Length: 56 bytes.
- * Operator password (4 bytes)  Transaction type (1 byte) 0  Discount, 1
- * Surcharge  Slip line number with the first line of Discount/Surcharge block
- * (1 byte)  Transaction Sum (5 bytes)  Tax 1 (1 byte) 0  no tax, 14
- * tax ID  Tax 2 (1 byte) 0  no tax, 14  tax ID  Tax 3 (1 byte) 0
- * no tax, 14  tax ID  Tax 4 (1 byte) 0  no tax, 14  tax ID
- * Text (40 bytes) Answer: 75H. Length: 3 bytes.  Result Code (1 byte)
- * Operator index number (1 byte) 130
+ * Standard Discount/Surcharge On Slip Command: 75H. Length: 56 bytes. ?
+ * Operator password (4 bytes) ? Transaction type (1 byte) ?0? ? Discount, ?1? ?
+ * Surcharge ? Slip line number with the first line of Discount/Surcharge block
+ * (1 byte) ? Transaction Sum (5 bytes) ? Tax 1 (1 byte) ?0? ? no tax, ?1???4? ?
+ * tax ID ? Tax 2 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 3 (1 byte) ?0? ?
+ * no tax, ?1???4? ? tax ID ? Tax 4 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ?
+ * Text (40 bytes) Answer: 75H. Length: 3 bytes. ? Result Code (1 byte) ?
+ * Operator index number (1 byte) 1?30
  ****************************************************************************/
 
 public final class SlipDiscountStandard extends PrinterCommand {

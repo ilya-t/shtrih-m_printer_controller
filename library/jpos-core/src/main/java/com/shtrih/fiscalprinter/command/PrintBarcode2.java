@@ -13,11 +13,19 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /*****************************************************************************
- * Print barcode Command: 0xCBh. Length: 57 bytes. - Operator password (4 bytes)
- * - Barcode height (1 byte) - Barcode width (1 byte) - Barcode HRI position (1
- * byte) - Barcode HRI pitch (1 byte) - Barcode type (1 byte) - Barcode data
- * (1-48 bytes) Answer: 0xC2h. Length: 3 bytes. - Result Code (1 byte) -
- * Operator number (1 byte) 130
+ * Print barcode 
+ * Command: 0xCBh. Length: 57 bytes. 
+ * - Operator password (4 bytes)
+ * - Barcode height (1 byte) 
+ * - Barcode width (1 byte) 
+ * - Barcode HRI position (1 byte) 
+ * - Barcode HRI pitch (1 byte) 
+ * - Barcode type (1 byte) 
+ * - Barcode data (1-48 bytes) 
+ * 
+ * Answer: 0xCBh. Length: 3 bytes. 
+ * - Result Code (1 byte) 
+ * - Operator number (1 byte) 1?30
  *****************************************************************************/
 
 public final class PrintBarcode2 extends PrinterCommand {

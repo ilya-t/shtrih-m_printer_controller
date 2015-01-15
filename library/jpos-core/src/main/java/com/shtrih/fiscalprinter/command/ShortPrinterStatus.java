@@ -163,4 +163,14 @@ public class ShortPrinterStatus implements PrinterConst {
     public void setOperatorNumber(int operatorNumber) {
         this.operatorNumber = operatorNumber;
     }
+    
+    public PrinterStatus getPrinterStatus() 
+    {
+        PrinterStatus status = new PrinterStatus();
+        status.setMode(mode);
+        status.setSubmode(submode);
+        status.setFlags(flags);
+        status.setOperator(operatorNumber);
+        return status;
+    }
 }

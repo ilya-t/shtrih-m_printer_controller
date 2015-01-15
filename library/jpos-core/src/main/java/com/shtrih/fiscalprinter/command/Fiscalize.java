@@ -13,12 +13,12 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /****************************************************************************
- * Fiscalization Command: 65H. Length: 20 bytes.  Old tax officer opassword (4
- * bytes)  New tax officer password (4 bytes)  Registration ID (5 bytes)
- * 00000000009999999999  Taxpayer ID (6 bytes) 000000000000999999999999
- * Answer: 65H. Length: 9 bytes.  Result Code (1 byte)  Fiscalization number
- * (1 byte) 116  Fiscalizations left number (1 byte) 015  Fiscal memory day
- * number (2 bytes) 00002100  Fiscalization date (3 bytes) DD-MM-YY
+ * Fiscalization Command: 65H. Length: 20 bytes. ? Old tax officer opassword (4
+ * bytes) ? New tax officer password (4 bytes) ? Registration ID (5 bytes)
+ * 0000000000?9999999999 ? Taxpayer ID (6 bytes) 000000000000?999999999999
+ * Answer: 65H. Length: 9 bytes. ? Result Code (1 byte) ? Fiscalization number
+ * (1 byte) 1?16 ? Fiscalizations left number (1 byte) 0?15 ? Fiscal memory day
+ * number (2 bytes) 0000?2100 ? Fiscalization date (3 bytes) DD-MM-YY
  ****************************************************************************/
 public final class Fiscalize extends PrinterCommand {
     // in params

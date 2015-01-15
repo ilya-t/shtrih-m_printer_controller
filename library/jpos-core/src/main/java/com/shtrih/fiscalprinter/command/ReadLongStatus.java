@@ -15,18 +15,18 @@ package com.shtrih.fiscalprinter.command;
  */
 
 /****************************************************************************
- * Get FP Status Command: 11H. Length: 5 bytes.  Operator password (4 bytes)
- * Answer: 11H. Length: 48 bytes.  Result Code (1 byte)  Operator index number
- * (1 byte) 130  FP firmware version (2 bytes)  FP firmware build (2 bytes)
- * FP firmware date (3 bytes) DD-MM-YY  Number of FP in checkout line (1 byte)
- *  Current receipt number (2 bytes)  FP flags (2 bytes)  FP mode (1 byte)
- * FP submode (1 byte)  FP port (1 byte)  FM firmware version (2 bytes)  FM
- * firmware build (2 bytes)  FM firmware date (3 bytes) DD-MM-YY  Current date
- * (3 bytes) DD-MM-YY  Current time (3 bytes) HH-MM-SS  FM flags (1 byte)
- * Serial number (4 bytes)  Number of last daily totals record in FM (2 bytes)
- * 00002100  Quantity of free daily totals records left in FM (2 bytes)  Last
- * fiscalization/refiscalization record number in FM (1 byte) 116  Quantity of
- * free fiscalization/refiscalization records left in FM (1 byte) 015
+ * Get FP Status Command: 11H. Length: 5 bytes. ? Operator password (4 bytes)
+ * Answer: 11H. Length: 48 bytes. ? Result Code (1 byte) ? Operator index number
+ * (1 byte) 1?30 ? FP firmware version (2 bytes) ? FP firmware build (2 bytes) ?
+ * FP firmware date (3 bytes) DD-MM-YY ? Number of FP in checkout line (1 byte)
+ * ? Current receipt number (2 bytes) ? FP flags (2 bytes) ? FP mode (1 byte) ?
+ * FP submode (1 byte) ? FP port (1 byte) ? FM firmware version (2 bytes) ? FM
+ * firmware build (2 bytes) ? FM firmware date (3 bytes) DD-MM-YY ? Current date
+ * (3 bytes) DD-MM-YY ? Current time (3 bytes) HH-MM-SS ? FM flags (1 byte) ?
+ * Serial number (4 bytes) ? Number of last daily totals record in FM (2 bytes)
+ * 0000?2100 ? Quantity of free daily totals records left in FM (2 bytes) ? Last
+ * fiscalization/refiscalization record number in FM (1 byte) 1?16 ? Quantity of
+ * free fiscalization/refiscalization records left in FM (1 byte) 0?15 ?
  * Taxpayer ID (6 bytes)
  ****************************************************************************/
 

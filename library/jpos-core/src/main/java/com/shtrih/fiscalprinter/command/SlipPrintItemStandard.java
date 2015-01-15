@@ -15,14 +15,14 @@ package com.shtrih.fiscalprinter.command;
  */
 
 /****************************************************************************
- * Standard Transaction On Slip Command: 73H. Length: 61 bytes.  Operator
- * password (4 bytes)  Slip line number with the first line of transaction
- * block (1 byte)  Quantity (5 bytes)  Unit Price (5 bytes)  Department (1
- * byte) 016  Tax 1 (1 byte) 0  no tax, 14  tax ID  Tax 2 (1 byte)
- * 0  no tax, 14  tax ID  Tax 3 (1 byte) 0  no tax, 14  tax
- * ID  Tax 4 (1 byte) 0  no tax, 14  tax ID  Text (40 bytes) Answer:
- * 73H. Length: 3 bytes.  Result Code (1 byte)  Operator index number (1 byte)
- * 130
+ * Standard Transaction On Slip Command: 73H. Length: 61 bytes. ? Operator
+ * password (4 bytes) ? Slip line number with the first line of transaction
+ * block (1 byte) ? Quantity (5 bytes) ? Unit Price (5 bytes) ? Department (1
+ * byte) 0?16 ? Tax 1 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 2 (1 byte)
+ * ?0? ? no tax, ?1???4? ? tax ID ? Tax 3 (1 byte) ?0? ? no tax, ?1???4? ? tax
+ * ID ? Tax 4 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Text (40 bytes) Answer:
+ * 73H. Length: 3 bytes. ? Result Code (1 byte) ? Operator index number (1 byte)
+ * 1?30
  ****************************************************************************/
 
 public final class SlipPrintItemStandard extends PrinterCommand {

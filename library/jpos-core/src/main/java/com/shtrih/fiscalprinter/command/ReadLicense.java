@@ -13,9 +13,9 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /****************************************************************************
- * Read License Command: 1DH. Length: 5 bytes.  System Administrator password
- * (4 bytes) 30 Answer: 1DH. Length: 7 bytes.  Result Code (1 byte)  License
- * (5 bytes) 00000000009999999999
+ * Read License Command: 1DH. Length: 5 bytes. ? System Administrator password
+ * (4 bytes) 30 Answer: 1DH. Length: 7 bytes. ? Result Code (1 byte) ? License
+ * (5 bytes) 0000000000?9999999999
  ****************************************************************************/
 public final class ReadLicense extends PrinterCommand {
     // in params

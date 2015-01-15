@@ -12,12 +12,12 @@ package com.shtrih.ej;
  *
  * @author V.Kravtsov
  */
-import com.shtrih.fiscalprinter.command.PrinterDate;
-import com.shtrih.util.StringUtils;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
+
+import com.shtrih.fiscalprinter.command.PrinterDate;
+import com.shtrih.util.StringUtils;
 
 public class EJDate {
 

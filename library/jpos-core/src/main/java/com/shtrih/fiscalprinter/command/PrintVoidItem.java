@@ -14,13 +14,13 @@ package com.shtrih.fiscalprinter.command;
  */
 /**
  * **************************************************************************
- * Void Transaction Command: 84H. Length: 60 bytes.  Operator password (4
- * bytes)  Quantity (5 bytes) 00000000009999999999  Unit Price (5 bytes)
- * 00000000009999999999  Department (1 byte) 016  Tax 1 (1 byte) 0  no
- * tax, 14  tax ID  Tax 2 (1 byte) 0  no tax, 14  tax ID  Tax 3
- * (1 byte) 0  no tax, 14  tax ID  Tax 4 (1 byte) 0  no tax,
- * 14  tax ID  Text (40 bytes) Answer: 84H. Length: 3 bytes.  Result
- * Code (1 byte)  Operator index number (1 byte) 130
+ * Void Transaction Command: 84H. Length: 60 bytes. ? Operator password (4
+ * bytes) ? Quantity (5 bytes) 0000000000?9999999999 ? Unit Price (5 bytes)
+ * 0000000000?9999999999 ? Department (1 byte) 0?16 ? Tax 1 (1 byte) ?0? ? no
+ * tax, ?1???4? ? tax ID ? Tax 2 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 3
+ * (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 4 (1 byte) ?0? ? no tax,
+ * ?1???4? ? tax ID ? Text (40 bytes) Answer: 84H. Length: 3 bytes. ? Result
+ * Code (1 byte) ? Operator index number (1 byte) 1?30
  ***************************************************************************
  */
 public final class PrintVoidItem extends PrinterCommand {

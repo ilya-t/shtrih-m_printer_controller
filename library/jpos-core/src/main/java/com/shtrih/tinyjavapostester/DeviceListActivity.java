@@ -16,8 +16,6 @@ package com.shtrih.tinyjavapostester;
  * limitations under the License.
  */
 
-import java.util.Set;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -37,7 +35,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.shtrih.fiscalprinter.R;
-
 /**
  * This Activity appears as a dialog. It lists any paired devices and devices
  * detected in the area after discovery. When a device is chosen by the user,
@@ -110,21 +107,18 @@ public class DeviceListActivity extends Activity {
 		if (mBtAdapter == null) {
 			return;
 		}
-		// Get a set of currently paired devices
-		Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
-
-		// If there are paired devices, add each one to the ArrayAdapter
-		if (pairedDevices.size() > 0) {
-			findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
-			for (BluetoothDevice device : pairedDevices) {
-				mPairedDevicesArrayAdapter.add(device.getName() + "\n"
-						+ device.getAddress());
-			}
-		} else {
-			String noDevices = getResources().getText(R.string.none_paired)
-					.toString();
-			mPairedDevicesArrayAdapter.add(noDevices);
-		}
+		/*
+		 * // Get a set of currently paired devices Set<BluetoothDevice>
+		 * pairedDevices = mBtAdapter.getBondedDevices(); // If there are paired
+		 * devices, add each one to the ArrayAdapter if (pairedDevices.size() >
+		 * 0) {
+		 * findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
+		 * for (BluetoothDevice device : pairedDevices) {
+		 * mPairedDevicesArrayAdapter.add(device.getName() + "\n" +
+		 * device.getAddress()); } } else { String noDevices =
+		 * getResources().getText(R.string.none_paired) .toString();
+		 * mPairedDevicesArrayAdapter.add(noDevices); }
+		 */
 	}
 
 	@Override
@@ -206,13 +200,12 @@ public class DeviceListActivity extends Activity {
 				// Get the BluetoothDevice object from the Intent
 				BluetoothDevice device = intent
 						.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-				// If it's already paired, skip it, because it's been listed
-				// already
-				if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-					mNewDevicesArrayAdapter.add(device.getName() + "\n"
-							+ device.getAddress());
 
-				}
+				Log.d(TAG,
+						"BT Device: " + device.getName() + ": "
+								+ device.getAddress());
+				mNewDevicesArrayAdapter.add(device.getName() + "\n"
+						+ device.getAddress());
 
 				// When discovery is finished, change the Activity title
 			} else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED

@@ -403,11 +403,18 @@ public interface PrinterConst {
     public static final int SMFP_EFPTR_NO_JRN_PAPER = 0x6C;
     // Slip is empty
     public static final int SMFP_EFPTR_NO_SLP_PAPER = 0xC6;
+    // Printing previous command
+    public static final int SMFP_EFPTR_PREVCOMMAND = 0x50;
+    // Waiting for repeat print command
+    public static final int SMFP_EFPTR_WAIT_PRINT_CONTINUE = 0x58;
     // Table is undefined
     public static final int SMFP_EFPTR_INVALID_TABLE = 0x5D;
     // Incorrect parameter value
     public static final int SMFP_EFPTR_INVALID_PARAMETER = 0x33;
-
+    // No more EJ data available (document end reached)
+    public static final int SMFP_EFPTR_EJ_NO_MORE_DATA = 0xA9;
+    
+    
     // ###################################################################
     // #### cut types
     // ###################################################################

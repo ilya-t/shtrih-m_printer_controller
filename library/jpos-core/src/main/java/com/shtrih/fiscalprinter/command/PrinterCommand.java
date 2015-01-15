@@ -9,13 +9,23 @@ public abstract class PrinterCommand {
 	private int timeout = DefaultTimeout;
 	private int resultCode = 0;
 	private final String charsetName = "Cp1251";
-
+        private boolean repeatEnabled = false;
+        private boolean repeatNeeded;
+        
 	/**
 	 * Creates a new instance of PrinterCommand
 	 */
 	public PrinterCommand() {
 	}
 
+        public boolean getRepeatNeeded(){
+            return repeatNeeded;
+        }
+
+        public void setRepeatNeeded(boolean value){
+            repeatNeeded = value;
+        }
+        
 	public int getTimeout() {
 		return timeout;
 	}
@@ -121,4 +131,13 @@ public abstract class PrinterCommand {
 	public void checkResultCode() throws Exception {
 		check(resultCode);
 	}
+        
+        public boolean getRepeatEnabled(){
+            return repeatEnabled;
+        }
+        
+        void setRepeatEnabled(boolean value){
+            repeatEnabled = value;
+        }
+        
 }

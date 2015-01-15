@@ -1,7 +1,7 @@
 /*
  * PrinterModelShtrihMFRK.java
  *
- * Created on 8  2010 ., 14:16
+ * Created on 8 ???? 2010 ?., 14:16
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

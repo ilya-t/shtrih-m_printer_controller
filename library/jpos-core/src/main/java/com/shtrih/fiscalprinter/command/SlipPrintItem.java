@@ -15,30 +15,30 @@ package com.shtrih.fiscalprinter.command;
  */
 
 /****************************************************************************
- * Transaction On Slip Command: 72H. Length: 82 bytes.  Operator password (4
- * bytes)  Quantity format (1 byte) 0  no digits after decimal dot, 1
- * digits after decimal dot  Number of lines in transaction block (1 byte) 13
- *  Line number of Text element in transaction block (1 byte) 03, 0  do not
- * print  Line number of Quantity Times Unit Price element in transaction block
- * (1 byte) 03, 0  do not print  Line number of Transaction Sum element in
- * transaction block (1 byte) 13  Line number of Department element in
- * transaction block (1 byte) 13  Font type of Text element (1 byte)  Font
- * type of Quantity element (1 byte)  Font type of Multiplication sign element
- * (1 byte)  Font type of Unit Price element (1 byte)  Font type of
- * Transaction Sum element (1 byte)  Font type of Department element (1 byte)
- * Length of Text element in characters (1 byte)  Length of Quantity element in
- * characters (1 byte)  Length of Unit Price element in characters (1 byte)
- * Length of Transaction Sum element in characters (1 byte)  Length of
- * Department element in characters (1 byte)  Position in line of Text element
- * (1 byte)  Position in line of Quantity Times Unit Price element (1 byte)
- * Position in line of Transaction Sum element (1 byte)  Position in line of
- * Department element (1 byte)  Slip line number with the first line of
- * transaction block (1 byte)  Quantity (5 bytes)  Unit Price (5 bytes)
- * Department (1 byte) 016  Tax 1 (1 byte) 0  no tax, 14  tax ID
- * Tax 2 (1 byte) 0  no tax, 14  tax ID  Tax 3 (1 byte) 0  no tax,
- * 14  tax ID  Tax 4 (1 byte) 0  no tax, 14  tax ID  Text (40
- * bytes) Answer: 72H. Length: 3 bytes.  Result Code (1 byte)  Operator index
- * number (1 byte) 130
+ * Transaction On Slip Command: 72H. Length: 82 bytes. ? Operator password (4
+ * bytes) ? Quantity format (1 byte) ?0? ? no digits after decimal dot, ?1? ?
+ * digits after decimal dot ? Number of lines in transaction block (1 byte) 1?3
+ * ? Line number of Text element in transaction block (1 byte) 0?3, ?0? ? do not
+ * print ? Line number of Quantity Times Unit Price element in transaction block
+ * (1 byte) 0?3, ?0? ? do not print ? Line number of Transaction Sum element in
+ * transaction block (1 byte) 1?3 ? Line number of Department element in
+ * transaction block (1 byte) 1?3 ? Font type of Text element (1 byte) ? Font
+ * type of Quantity element (1 byte) ? Font type of Multiplication sign element
+ * (1 byte) ? Font type of Unit Price element (1 byte) ? Font type of
+ * Transaction Sum element (1 byte) ? Font type of Department element (1 byte) ?
+ * Length of Text element in characters (1 byte) ? Length of Quantity element in
+ * characters (1 byte) ? Length of Unit Price element in characters (1 byte) ?
+ * Length of Transaction Sum element in characters (1 byte) ? Length of
+ * Department element in characters (1 byte) ? Position in line of Text element
+ * (1 byte) ? Position in line of Quantity Times Unit Price element (1 byte) ?
+ * Position in line of Transaction Sum element (1 byte) ? Position in line of
+ * Department element (1 byte) ? Slip line number with the first line of
+ * transaction block (1 byte) ? Quantity (5 bytes) ? Unit Price (5 bytes) ?
+ * Department (1 byte) 0?16 ? Tax 1 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ?
+ * Tax 2 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Tax 3 (1 byte) ?0? ? no tax,
+ * ?1???4? ? tax ID ? Tax 4 (1 byte) ?0? ? no tax, ?1???4? ? tax ID ? Text (40
+ * bytes) Answer: 72H. Length: 3 bytes. ? Result Code (1 byte) ? Operator index
+ * number (1 byte) 1?30
  ****************************************************************************/
 
 public final class SlipPrintItem extends PrinterCommand {

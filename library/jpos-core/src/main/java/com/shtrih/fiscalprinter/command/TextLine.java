@@ -1,7 +1,7 @@
 /*
  * TextLine.java
  *
- * Created on 10  2010 ., 16:54
+ * Created on 10 ???? 2010 ?., 16:54
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

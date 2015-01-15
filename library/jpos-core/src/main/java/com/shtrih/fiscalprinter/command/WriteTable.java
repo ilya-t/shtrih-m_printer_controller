@@ -17,9 +17,9 @@ package com.shtrih.fiscalprinter.command;
 import com.shtrih.util.MethodParameter;
 
 /****************************************************************************
- * Set Table Field Value Command: 1EH. Length: (9+X) bytes.  System
- * Administrator password (4 bytes) 30  Table (1 byte)  Row (2 bytes)  Field
- * (1 byte)  Value (X bytes) up to 40 bytes Answer: 1EH. Length: 2 bytes.
+ * Set Table Field Value Command: 1EH. Length: (9+X) bytes. ? System
+ * Administrator password (4 bytes) 30 ? Table (1 byte) ? Row (2 bytes) ? Field
+ * (1 byte) ? Value (X bytes) up to 40 bytes Answer: 1EH. Length: 2 bytes. ?
  * Result Code (1 byte)
  ****************************************************************************/
 

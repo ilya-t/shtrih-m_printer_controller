@@ -55,7 +55,6 @@ public class BluetoothPort implements PrinterPort {
 
 	@Override
 	public void setPortName(String portName) throws Exception {
-		logger.debug("setPortName('" + portName + "')");
 		if (!this.portName.equalsIgnoreCase(portName)) {
 			this.portName = portName;
 		}
@@ -76,8 +75,6 @@ public class BluetoothPort implements PrinterPort {
 	@Override
 	public void open(int timeout) throws Exception {
 		if (isClosed()) {
-			logger.debug("open");
-
 			BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
 			if (adapter == null) {
 				throw new Exception("Bluetooth not supported");
@@ -90,7 +87,6 @@ public class BluetoothPort implements PrinterPort {
 			if (adapter.isDiscovering()) {
 				adapter.cancelDiscovery();
 			}
-			logger.debug("Adapter state: " + adapter.getState());
 			switch (adapter.getState()) {
 			case BluetoothAdapter.STATE_TURNING_ON: {
 				waitBluetoothAdapterStateOn(adapter, openTimeout);
@@ -101,19 +97,14 @@ public class BluetoothPort implements PrinterPort {
 				throw new Exception("Bluetooth is turning off");
 			}
 			}
-			logger.debug("adapter.getRemoteDevice");
 			BluetoothDevice device = adapter.getRemoteDevice(portName);
-			logger.debug("device.createRfcommSocketToServiceRecord");
 			socket = device.createRfcommSocketToServiceRecord(MY_UUID);
-			logger.debug("socket.connect()");
 			socket.connect();
 		}
 	}
 
 	public void waitBluetoothAdapterStateOn(BluetoothAdapter adapter,
 			int timeout) throws Exception {
-		logger.debug("waitBluetoothAdapterStateOn.0");
-
 		long startTime = System.currentTimeMillis();
 		for (;;) {
 			long currentTime = System.currentTimeMillis();
@@ -126,13 +117,11 @@ public class BluetoothPort implements PrinterPort {
 				throw new Exception("BluetoothAdapter turning on timeout");
 			}
 		}
-		logger.debug("waitBluetoothAdapterStateOn.1");
 	}
 
 	@Override
 	public synchronized void close() {
 		if (isOpened()) {
-			logger.debug("close");
 			try {
 				socket.close();
 			} catch (Exception e) {
@@ -175,7 +164,6 @@ public class BluetoothPort implements PrinterPort {
 
 	@Override
 	public void write(byte[] b) throws Exception {
-		logger.debug("Write.0");
 		connect();
 		for (int i = 0; i < 2; i++) {
 			try {
@@ -240,7 +228,6 @@ public class BluetoothPort implements PrinterPort {
 	}
 
 	public String[] getPortNames() throws Exception {
-		logger.debug("getPortNames");
 		Vector<String> result = new Vector<String>();
 		result.add(BluetoothAdapter.getDefaultAdapter().getAddress());
 		return result.toArray(new String[result.size()]);

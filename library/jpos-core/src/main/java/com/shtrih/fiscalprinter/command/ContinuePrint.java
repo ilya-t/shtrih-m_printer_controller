@@ -13,9 +13,9 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /*****************************************************************************
- * Continue printing Command: B0H. Length: 5 bytes.  Operator, Administrator or
- * System Administrator password (4 bytes) Answer: B0H. Length: 3 bytes.
- * Result Code (1 byte)  Operator index number (1 byte) 130
+ * Continue printing Command: B0H. Length: 5 bytes. ? Operator, Administrator or
+ * System Administrator password (4 bytes) Answer: B0H. Length: 3 bytes. ?
+ * Result Code (1 byte) ? Operator index number (1 byte) 1?30
  *****************************************************************************/
 public final class ContinuePrint extends PrinterCommand {
     // in

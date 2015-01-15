@@ -1,32 +1,35 @@
 package com.shtrih.jpos.fiscalprinter;
 
-import com.shtrih.fiscalprinter.SMFiscalPrinter;
-
 public interface PrinterHeader {
 
-	public void clear();
-        
-	public int size();
+	public void initDevice() throws Exception;
 
-	public void setCount(int count);
-        
-	public int print(SMFiscalPrinter printer) throws Exception;
+	public int getNumHeaderLines() throws Exception;
 
-	public void initDevice(SMFiscalPrinter printer) throws Exception;
+	public int getNumTrailerLines() throws Exception;
 
-	public HeaderLine get(int index) throws Exception;
+	public void setNumHeaderLines(int numHeaderLines) throws Exception;
 
-	public int print(SMFiscalPrinter printer, int num1, int num2) throws Exception;
+	public void setNumTrailerLines(int numHeaderLines) throws Exception;
 
-	public boolean validNumber(int number) throws Exception;
-
-	public void setLine(int number, String text, boolean doubleWidth)
+	public void setHeaderLine(int number, String text, boolean doubleWidth)
 			throws Exception;
-        
-	public void writeLine(SMFiscalPrinter printer, int number, String text, boolean doubleWidth)
+
+	public void setTrailerLine(int number, String text, boolean doubleWidth)
 			throws Exception;
-        
-	public void addLine(String text, boolean doubleWidth)
+
+	public HeaderLine getHeaderLine(int number) throws Exception;
+
+	public HeaderLine getTrailerLine(int number) throws Exception;
+
+	public void load(XmlPropReader reader) throws Exception;
+
+	public void save(XmlPropWriter writer) throws Exception;
+
+	public void beginDocument(String additionalHeader, String additionalTrailer)
+			throws Exception;
+
+	public void endDocument(String additionalHeader, String additionalTrailer)
 			throws Exception;
 
 }

@@ -13,9 +13,13 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /*****************************************************************************
- * Print barcode Command: C2H. Length: 10 bytes.  Operator password (4 bytes)
- * Barcode (5 bytes) 000000000000999999999999 Answer: C2H. Length: 3 bytes.
- * Result Code (1 byte)  Operator index number (1 byte) 130
+ * Print barcode 
+ * Command: C2H. Length: 10 bytes. 
+ * - Operator password (4 bytes) ?
+ * - Barcode (5 bytes) 000000000000?999999999999
+ * Answer: C2H. Length: 3 bytes. ?
+ * - Result Code (1 byte)
+ * - Operator index number (1 byte) 1?30
  *****************************************************************************/
 public final class PrintBarcode extends PrinterCommand {
     // in

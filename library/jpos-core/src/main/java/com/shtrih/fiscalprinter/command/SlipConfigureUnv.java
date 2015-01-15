@@ -15,12 +15,12 @@ package com.shtrih.fiscalprinter.command;
  */
 
 /****************************************************************************
- * Set Universal Configuration Of Slip Command: 7EH. Length: 11 bytes.
- * Operator password (4 bytes)  Slip width in printer steps (2 bytes)*  Slip
- * length in printer steps (2 bytes)*  Printing direction  clockwise rotation
- * in degrees (1 byte) 0  0?, 1  90?, 2  180?, 3  270?  Spacing
- * between lines in printer steps (1 byte)* Answer: 7EH. Length: 3 bytes.
- * Result Code (1 byte)  Operator index number (1 byte) 130 printer step value
+ * Set Universal Configuration Of Slip Command: 7EH. Length: 11 bytes. ?
+ * Operator password (4 bytes) ? Slip width in printer steps (2 bytes)* ? Slip
+ * length in printer steps (2 bytes)* ? Printing direction ? clockwise rotation
+ * in degrees (1 byte) ?0? ? 0?, ?1? ? 90?, ?2? ? 180?, ?3? ? 270? ? Spacing
+ * between lines in printer steps (1 byte)* Answer: 7EH. Length: 3 bytes. ?
+ * Result Code (1 byte) ? Operator index number (1 byte) 1?30 printer step value
  * depends on the printing mechanism of a specific fiscal printer. The
  * horizontal step value differs from vertical step value: these parameters are
  * given in User Guide documentation for a specific fiscal printer.

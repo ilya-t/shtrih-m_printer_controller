@@ -13,9 +13,9 @@ package com.shtrih.fiscalprinter.command;
  * @author V.Kravtsov
  */
 /****************************************************************************
- * Open nonfiscal document Command: E2H. Message length: 5 bytes.  Operator
- * password (4 bytes) Answer: E2H. Message length: 3 bytes.  Result code (1
- * byte)  Operator number (1 byte) 130 Command opens nonfiscal document.
+ * Open nonfiscal document Command: E2H. Message length: 5 bytes. ? Operator
+ * password (4 bytes) Answer: E2H. Message length: 3 bytes. ? Result code (1
+ * byte) ? Operator number (1 byte) 1?30 Command opens nonfiscal document.
  ****************************************************************************/
 public final class BeginNonFiscalDocument extends PrinterCommand {
     // in

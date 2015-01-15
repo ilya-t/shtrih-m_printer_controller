@@ -1,7 +1,7 @@
 /*
  * DIOReadTable.java
  *
- * Created on 23  2009 ., 14:17
+ * Created on 23 ??????? 2009 ?., 14:17
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

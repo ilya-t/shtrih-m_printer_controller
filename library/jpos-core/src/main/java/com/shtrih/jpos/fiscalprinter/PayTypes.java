@@ -12,20 +12,25 @@ import java.util.Hashtable;
 
 public class PayTypes {
 
-    private final Hashtable items = new Hashtable();
+	private final Hashtable items = new Hashtable();
 
-    public PayTypes() {
-    }
+	public PayTypes() {
+	}
 
-    public void clear() {
-        items.clear();
-    }
+	public void clear() {
+		items.clear();
+	}
 
-    public void put(String key, PayType value) {
-        items.put(key, value);
-    }
+	public int size() {
+		return items.size();
+	}
 
-    public PayType get(String key) {
-        return (PayType) items.get(key);
-    }
+	public void put(String key, PayType value) {
+		items.put(key, value);
+	}
+
+	public PayType get(String key) {
+		PayType result = (PayType) items.get(key);
+		return result;
+	}
 }

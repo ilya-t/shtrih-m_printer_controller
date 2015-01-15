@@ -14,6 +14,8 @@ import java.util.Vector;
 import jpos.config.JposEntry;
 import jpos.config.RS232Const;
 
+import org.apache.log4j.Logger;
+
 import com.shtrih.fiscalprinter.FontNumber;
 import com.shtrih.fiscalprinter.command.PrinterConst;
 import com.shtrih.jpos.JposPropertyReader;
@@ -99,6 +101,8 @@ public class FptrParameters {
 	public int openReceiptType = SmFptrConst.SMFPTR_OPEN_RECEIPT_ITEM;
 	public boolean ZReportDayNumber = false;
 	public int headerMode = SmFptrConst.SMFPTR_HEADER_MODE_DRIVER;
+	private static Logger logger = Logger.getLogger(FptrParameters.class);
+	public int logoPosition = SmFptrConst.SMFPTR_LOGO_AFTER_HEADER;
 
 	public FptrParameters() throws Exception {
 		font = new FontNumber(PrinterConst.FONT_NUMBER_NORMAL);
@@ -147,6 +151,7 @@ public class FptrParameters {
 			if (stringEncoding.equals("")) {
 				stringEncoding = "UTF-8";
 			}
+			logger.debug("stringEncoding: \"" + stringEncoding + "\"");
 
 			escCommandsEnabled = reader
 					.readBoolean("escCommandsEnabled", false);
@@ -222,6 +227,8 @@ public class FptrParameters {
 
 			headerMode = reader.readInteger("headerMode",
 					SmFptrConst.SMFPTR_HEADER_MODE_DRIVER);
+			logoPosition = reader.readInteger("logoPosition",
+					SmFptrConst.SMFPTR_LOGO_AFTER_HEADER);
 
 			// paymentNames
 			String paymentName;

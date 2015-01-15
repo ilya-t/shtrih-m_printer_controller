@@ -58,11 +58,11 @@ public class GlobusSalesReceipt extends CustomReceipt implements FiscalReceipt {
         }
     }
 
-    private static final String PrinterChargeText = "";
-    private static final String PrinterDiscountText = "";
-    private static final String PrinterVoidChargeText = " ";
-    private static final String PrinterVoidDiscountText = " ";
-    private static final String PrinterItemVoidText = "";
+    private static final String PrinterChargeText = "????????";
+    private static final String PrinterDiscountText = "??????";
+    private static final String PrinterVoidChargeText = "?????? ????????";
+    private static final String PrinterVoidDiscountText = "?????? ??????";
+    private static final String PrinterItemVoidText = "??????";
     private final Vector preLines = new Vector();
     private static Logger logger = Logger.getLogger(GlobusSalesReceipt.class);
     private int receiptType = 0;
@@ -113,13 +113,13 @@ public class GlobusSalesReceipt extends CustomReceipt implements FiscalReceipt {
         if (getParams().RFShowTaxLetters) {
             switch (vatInfo) {
                 case 1:
-                    return "_";
+                    return "_?";
                 case 2:
-                    return "_";
+                    return "_?";
                 case 3:
-                    return "_";
+                    return "_?";
                 case 4:
-                    return "_";
+                    return "_?";
                 default:
                     return "";
             }

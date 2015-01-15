@@ -14,8 +14,8 @@ package com.shtrih.fiscalprinter.command;
  */
 /****************************************************************************
  * Print document copy CRC from electronic journal Command: A5H. Length: 9
- * bytes.  System Administrator password (4 bytes) 30  KPK number (4 bytes)
- * 0000000099999999 Answer: A5H. Length: 2 bytes.  Result Code (1 byte) NOTE:
+ * bytes. ? System Administrator password (4 bytes) 30 ? KPK number (4 bytes)
+ * 00000000?99999999 Answer: A5H. Length: 2 bytes. ? Result Code (1 byte) NOTE:
  * Command execution may take up to 40 seconds.
  ****************************************************************************/
 public final class PrintEJDocument extends PrinterCommand {

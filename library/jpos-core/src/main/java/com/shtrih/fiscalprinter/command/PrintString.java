@@ -15,10 +15,10 @@ package com.shtrih.fiscalprinter.command;
  */
 
 /****************************************************************************
- * Print String Command: 17H. Length: 46 bytes.  Operator password (4 bytes)
- * Flags (1 byte) Bit 0  print on journal station, Bit 1  print on receipt
- * station.  String of characters to print (40 bytes) Answer: 17H. Length: 3
- * bytes.  Result Code (1 byte)  Operator index number (1 byte) 130 NOTE:
+ * Print String Command: 17H. Length: 46 bytes. ? Operator password (4 bytes) ?
+ * Flags (1 byte) Bit 0 ? print on journal station, Bit 1 ? print on receipt
+ * station. ? String of characters to print (40 bytes) Answer: 17H. Length: 3
+ * bytes. ? Result Code (1 byte) ? Operator index number (1 byte) 1?30 NOTE:
  * Only WIN1251 code page characters can be printed. Characters with codes 0 to
  * 31 are ignored.
  ****************************************************************************/

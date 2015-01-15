@@ -12,15 +12,6 @@ package com.shtrih.jpos;
  *
  * @author V.Kravtsov
  */
-import com.shtrih.util.SysUtils;
-import com.shtrih.util.XmlUtils;
-
-import org.apache.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.StringWriter;
@@ -32,6 +23,15 @@ import java.util.Vector;
 import jpos.JposConst;
 import jpos.JposException;
 import jpos.JposStatisticsConst;
+
+import org.apache.log4j.Logger;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.shtrih.util.SysUtils;
+import com.shtrih.util.XmlUtils;
 
 public class JposDeviceStatistics implements JposStatistics,
         JposStatisticsConst, JposConst {
@@ -58,12 +58,6 @@ public class JposDeviceStatistics implements JposStatistics,
     public String serialNumber = "";
     public String firmwareRevision = "";
     public String physicalInterface = "";
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
-
     public String installationDate = "";
 
     public final StatisticItems items = new StatisticItems(JPOS_STAT_UnifiedPOS);
@@ -154,11 +148,11 @@ public class JposDeviceStatistics implements JposStatistics,
 
     /*
      * This is a comma-separated list of name-value pair(s), where an empty
-     * string name (=value1) means ALL resettable statistics are to be set
-     * to the value value1, U_=value2 means all UnifiedPOS defined
-     * resettable statistics are to be set to the value value2, M_=value3
+     * string name (???=value1?) means ALL resettable statistics are to be set
+     * to the value ?value1?, ?U_=value2? means all UnifiedPOS defined
+     * resettable statistics are to be set to the value ?value2?, ?M_=value3?
      * means all manufacturer defined resettable statistics are to be set to the
-     * value value3, and actual_name1=value4, actual_name2=value5 (from the
+     * value ?value3?, and ?actual_name1=value4, actual_name2=value5? (from the
      * XML file definitions) means that the specifically defined resettable
      * statistic(s) are to be set to the specified value(s)
      */

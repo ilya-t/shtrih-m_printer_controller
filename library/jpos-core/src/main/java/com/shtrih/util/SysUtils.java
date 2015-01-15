@@ -1,8 +1,8 @@
 package com.shtrih.util;
 
-import android.content.Context;
-
 import java.io.File;
+
+import android.content.Context;
 
 public class SysUtils {
 	public static String getFilesPath() throws Exception {

@@ -1,7 +1,7 @@
 /*
  * PrinterModelShtrihLightFRK.java
  *
- * Created on 8  2010 ., 20:41
+ * Created on 8 ???? 2010 ?., 20:41
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

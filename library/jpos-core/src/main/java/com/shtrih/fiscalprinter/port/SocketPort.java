@@ -21,7 +21,7 @@ import com.shtrih.util.Localizer;
  */
 public class SocketPort implements PrinterPort {
 
-	private int timeout = 3000;
+	private int timeout = 1000;
 	private final Socket socket;
 	private InputStream in;
 	private OutputStream out;
@@ -32,7 +32,7 @@ public class SocketPort implements PrinterPort {
 		socket = new Socket();
 	}
 
-	@Override
+	
 	public void open(int timeout) throws Exception {
 		if (!socket.isConnected()) {
 			socket.setSoTimeout(this.timeout);
@@ -60,12 +60,12 @@ public class SocketPort implements PrinterPort {
 		}
 	}
 
-	@Override
+	
 	public void close() throws Exception {
 		socket.close();
 	}
 
-	@Override
+	
 	public int readByte() throws Exception {
 		int b = doReadByte();
 		return b;
@@ -93,7 +93,7 @@ public class SocketPort implements PrinterPort {
 		throw new IOException(Localizer.getString(Localizer.NoConnection));
 	}
 
-	@Override
+	
 	public byte[] readBytes(int len) throws Exception {
 		byte[] data = new byte[len];
 		int offset = 0;
@@ -109,12 +109,13 @@ public class SocketPort implements PrinterPort {
 	}
 
 	public void connect() throws Exception {
-		if (!socket.isConnected()) {
-			open(10000);
+		if (!socket.isConnected()) 
+                {
+			open(timeout);
 		}
 	}
 
-	@Override
+	
 	public void write(byte[] b) throws Exception {
 		for (int i = 0; i < 2; i++) {
 			try {
@@ -131,22 +132,22 @@ public class SocketPort implements PrinterPort {
 		}
 	}
 
-	@Override
+	
 	public void write(int b) throws Exception {
 		out.write(b);
 		out.flush();
 	}
 
-	@Override
+	
 	public void setBaudRate(int baudRate) throws Exception {
 	}
 
-	@Override
+	
 	public void setTimeout(int timeout) throws Exception {
 		this.timeout = timeout;
 	}
 
-	@Override
+	
 	public void setPortName(String portName) throws Exception {
 		this.portName = portName;
 	}

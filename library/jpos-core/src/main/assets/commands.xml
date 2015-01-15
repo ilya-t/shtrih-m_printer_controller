@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <root>
 	<Commands>
 		<Command>
@@ -3056,7 +3056,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"TOTAL" font number</Name>
+					<Name>&quot;TOTAL&quot; font number</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3070,7 +3070,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"CASH" font number</Name>
+					<Name>&quot;CASH&quot; font number</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3126,7 +3126,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"CHANGE" font number</Name>
+					<Name>&quot;CHANGE&quot; font number</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3252,7 +3252,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"SUBTOTAL" font number</Name>
+					<Name>&quot;SUBTOTAL&quot; font number</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3266,7 +3266,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"DISCOUNT XX.XX %" font number</Name>
+					<Name>&quot;DISCOUNT XX.XX %&quot; font number</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3469,7 +3469,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"TOTAL" field horizontal spacing</Name>
+					<Name>&quot;TOTAL&quot; field horizontal spacing</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3483,7 +3483,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"CASH" field horizontal spacing</Name>
+					<Name>&quot;CASH&quot; field horizontal spacing</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3539,7 +3539,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"CHANGE" field horizontal spacing</Name>
+					<Name>&quot;CHANGE&quot; field horizontal spacing</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3665,7 +3665,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"TOTAL" field horizontal spacing</Name>
+					<Name>&quot;TOTAL&quot; field horizontal spacing</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>
@@ -3679,7 +3679,7 @@
 					<MaxValue>0</MaxValue>
 				</Param>
 				<Param>
-					<Name>"DISCOUNT XX.XX %" field horizontal spacing</Name>
+					<Name>&quot;DISCOUNT XX.XX %&quot; field horizontal spacing</Name>
 					<Size>1</Size>
 					<Type>0</Type>
 					<MinValue>0</MinValue>

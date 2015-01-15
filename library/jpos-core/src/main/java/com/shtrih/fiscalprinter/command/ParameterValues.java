@@ -1,7 +1,7 @@
 /*
  * PrinterTables.java
  *
- * Created on 17  2009 ., 12:37
+ * Created on 17 ?????? 2009 ?., 12:37
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

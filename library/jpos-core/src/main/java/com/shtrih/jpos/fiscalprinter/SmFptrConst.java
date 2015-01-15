@@ -1,7 +1,7 @@
 /*
  * SmFptrConst.java
  *
- * Created on 13  2009 ., 17:57
+ * Created on 13 ?????? 2009 ?., 17:57
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -378,7 +378,11 @@ public interface SmFptrConst {
 	// ///////////////////////////////////////////////////////////////////
 	// Header mode constants
 
+	// Header printed before receipt beginning
 	public static final int SMFPTR_HEADER_MODE_DRIVER = 0;
+	// Header printed by driver
 	public static final int SMFPTR_HEADER_MODE_PRINTER = 1;
+	// Header printed after receipt beginning
+	public static final int SMFPTR_HEADER_MODE_DRIVER2 = 2;
 
 }

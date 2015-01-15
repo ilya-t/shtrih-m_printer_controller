@@ -4,16 +4,16 @@
  */
 package com.shtrih.fiscalprinter;
 
+import java.io.ByteArrayOutputStream;
+
+import org.apache.log4j.Logger;
+
 import com.shtrih.fiscalprinter.command.CommandOutputStream;
 import com.shtrih.fiscalprinter.command.PrinterCommand;
 import com.shtrih.fiscalprinter.command.PrinterConst;
 import com.shtrih.fiscalprinter.port.PrinterPort;
 import com.shtrih.util.Localizer;
 import com.shtrih.util.Logger2;
-
-import org.apache.log4j.Logger;
-
-import java.io.ByteArrayOutputStream;
 
 /**
  * @author V.Kravtsov
@@ -27,17 +27,14 @@ public class PrinterProtocol_2 implements PrinterProtocol {
 	byte[] rx = {};
 	private int byteTimeout = 100;
 	private int maxRepeatCount = 3;
-	private final ExceptionHandler errorHandler;
 	private static Logger logger = Logger.getLogger(PrinterProtocol_2.class);
 
-	public PrinterProtocol_2(PrinterPort port, ExceptionHandler errorHandler) {
+	public PrinterProtocol_2(PrinterPort port) {
 		this.port = port;
-		this.errorHandler = errorHandler;
 	}
 
 	public PrinterProtocol_2() {
 		this.port = null;
-		this.errorHandler = null;
 	}
 
 	public int getByteTimeout() {
@@ -78,7 +75,6 @@ public class PrinterProtocol_2 implements PrinterProtocol {
 		int timeout = command.getTimeout();
 		port.setTimeout(timeout + byteTimeout);
 		try {
-			logger.debug("sendCmd");
 			sendCommand(command.encodeData());
 			int frameNum = readAnswer();
 			if (frameNum != frameNumber) {

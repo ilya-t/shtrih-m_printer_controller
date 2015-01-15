@@ -1,7 +1,7 @@
 /*
  * PrinterModelYarus01K.java
  *
- * Created on 13  2010 ., 12:27
+ * Created on 13 ???? 2010 ?., 12:27
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
@@ -34,10 +34,10 @@ public class PrinterModelYarus01K2 extends PrinterModelDefault implements
 		capRecEmptySensor = true;
 		capRecNearEndSensor = true;
 		capRecLeverSensor = true;
-		capJrnPresent = true;
-		capJrnEmptySensor = true;
-		capJrnNearEndSensor = true;
-		capJrnLeverSensor = true;
+		capJrnPresent = false;
+		capJrnEmptySensor = false;
+		capJrnNearEndSensor = false;
+		capJrnLeverSensor = false;
 		capEJPresent = true;
 		capFMPresent = true;
 		capSlpPresent = false;

@@ -128,7 +128,7 @@ public class MonitoringServer implements Runnable {
         }
     }
 
-    // INFO  , .  ,
+    // INFO ?????? ???, ???. ? ???, ????? ????
     public String getInfoText() throws Exception {
         String text = service.getDeviceMetrics().getDeviceName() + ","
                 + service.getLongStatus().getSerial() + ","
@@ -136,7 +136,7 @@ public class MonitoringServer implements Runnable {
         return text;
     }
 
-    // ECTP  ,   ,
+    // ECTP ????? ????, ???? ??????????? ????, ????? ???????????
     public String getECTPText() throws Exception {
         EJActivation activation = service.getEJActivation();
         String text = activation.getEJSerial() + "," + activation.getDate()

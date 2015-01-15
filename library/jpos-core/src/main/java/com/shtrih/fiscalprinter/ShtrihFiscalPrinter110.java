@@ -1,12 +1,17 @@
 package com.shtrih.fiscalprinter;
 
+/*
+ * ShtrihFiscalPrinter.java
+ *
+ * Created on 23 ?????? 2009 ?., 22:32
+ *
+ * To change this template, choose Tools | Template Manager
+ * and open the template in the editor.
+ */
 /**
  *
  * @author V.Kravtsov
  */
-import com.shtrih.fiscalprinter.command.PrinterStatus;
-import com.shtrih.jpos.fiscalprinter.SmFptrConst;
-
 import jpos.BaseControl;
 import jpos.FiscalPrinter;
 import jpos.FiscalPrinterConst;
@@ -17,6 +22,9 @@ import jpos.events.DirectIOListener;
 import jpos.events.ErrorListener;
 import jpos.events.OutputCompleteListener;
 import jpos.events.StatusUpdateListener;
+
+import com.shtrih.fiscalprinter.command.PrinterStatus;
+import com.shtrih.jpos.fiscalprinter.SmFptrConst;
 
 /**
  * Wrapper class to help using directIO codes *
@@ -1447,7 +1455,7 @@ public class ShtrihFiscalPrinter110 implements BaseControl,
         directIO(SmFptrConst.SMFPTR_DIO_WRITE_CASHIER_NAME, null, lines);
     }
 
-    // cutMode: 0  full cut, 1  partial cut
+    // cutMode: 0 ? full cut, 1 ? partial cut
     public void cutPaper(int cutMode) throws JposException {
         int[] data = new int[1];
         data[0] = cutMode;

@@ -28,7 +28,6 @@ public class PrinterProtocol_1 implements PrinterProtocol {
 	// serial port interface
 
 	private PrinterPort port = null;
-	private ExceptionHandler errorHandler = null;
 	// byte receive timeout
 	private int byteTimeout = 100;
 	// constants
@@ -47,13 +46,8 @@ public class PrinterProtocol_1 implements PrinterProtocol {
 	private final Frame frame = new Frame();
 	private static Logger logger = Logger.getLogger(PrinterProtocol_1.class);
 
-	public PrinterProtocol_1(PrinterPort port, ExceptionHandler errorHandler) {
+	public PrinterProtocol_1(PrinterPort port) {
 		this.port = port;
-		this.errorHandler = errorHandler;
-	}
-
-	public void setErrorHandler(ExceptionHandler errorHandler) {
-		this.errorHandler = errorHandler;
 	}
 
 	public PrinterPort getPrinterPort() {
@@ -121,26 +115,19 @@ public class PrinterProtocol_1 implements PrinterProtocol {
 	private void writeCommand(byte[] data) throws Exception {
 		byte nakCommandNumber = 0;
 		while (true) {
-			try {
-				port.write(data);
-				switch (port.readByte()) {
-				case ACK:
-					return;
-				case NAK:
-					nakCommandNumber++;
-					if (nakCommandNumber >= maxNakCommandNumber) {
-						throw new DeviceException(
-								PrinterConst.SMFPTR_E_NOCONNECTION,
-								"nakCommandNumber >= maxNakCommandNumber");
-					}
-				default:
-					return;
+			port.write(data);
+			switch (port.readByte()) {
+			case ACK:
+				return;
+			case NAK:
+				nakCommandNumber++;
+				if (nakCommandNumber >= maxNakCommandNumber) {
+					throw new DeviceException(
+							PrinterConst.SMFPTR_E_NOCONNECTION,
+							"nakCommandNumber >= maxNakCommandNumber");
 				}
-			} catch (Exception e) {
-				if ((errorHandler == null)
-						|| (!errorHandler.handleException(e))) {
-					throw DeviceException.writeCommandError();
-				}
+			default:
+				return;
 			}
 		}
 	}
@@ -153,11 +140,7 @@ public class PrinterProtocol_1 implements PrinterProtocol {
 			port.setTimeout(byteTimeout);
 			port.write(ENQ);
 
-			int B = 0;
-			try {
-				B = port.readByte();
-			} catch (IOException e) {
-			}
+			int B = port.readByte();
 
 			switch (B) {
 			case ACK:
@@ -180,12 +163,8 @@ public class PrinterProtocol_1 implements PrinterProtocol {
 			}
 
 			if (enqNumber >= maxEnqNumber) {
-				if ((errorHandler == null)
-						|| (!errorHandler.handleException(null))) {
-					throw new DeviceException(
-							PrinterConst.SMFPTR_E_NOCONNECTION,
-							Localizer.getString(Localizer.NoConnection));
-				}
+				throw new DeviceException(PrinterConst.SMFPTR_E_NOCONNECTION,
+						Localizer.getString(Localizer.NoConnection));
 			}
 		}
 	}
@@ -211,11 +190,7 @@ public class PrinterProtocol_1 implements PrinterProtocol {
 			port.setTimeout(byteTimeout);
 			port.write(ENQ);
 
-			int B = 0;
-			try {
-				B = port.readByte();
-			} catch (IOException e) {
-			}
+			int B = port.readByte();
 
 			switch (B) {
 			case ACK:
