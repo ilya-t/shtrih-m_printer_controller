@@ -1,5 +1,10 @@
 package com.shtrih.tinyjavapostester;
 
+import android.text.TextUtils;
+
+import com.shtrih.util.StaticContext;
+import com.shtrih.util.SysUtils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -10,14 +15,14 @@ import jpos.config.JposEntryRegistry;
 import jpos.loader.JposServiceLoader;
 import jpos.util.JposPropertiesConst;
 
-import com.shtrih.util.StaticContext;
-import com.shtrih.util.SysUtils;
-
 public class JposConfig {
 
-	public static void configure(String deviceName, String portName)
+	public static void configure(String deviceName, String portName, String configFileName)
 			throws Exception {
-		copyAsset("jpos.xml", SysUtils.getFilesPath() + "jpos.xml");
+        if (TextUtils.isEmpty(configFileName)){
+            configFileName = "jpos.xml";
+        }
+		copyAsset(configFileName, SysUtils.getFilesPath() + "jpos.xml");
 		String fileURL = "file://" + SysUtils.getFilesPath() + "jpos.xml";
 		System.setProperty(
 				JposPropertiesConst.JPOS_POPULATOR_FILE_URL_PROP_NAME, fileURL);
