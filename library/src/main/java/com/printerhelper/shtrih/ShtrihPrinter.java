@@ -14,7 +14,6 @@ import com.printerhelper.common.DefaultSettingsContainer;
 import com.printerhelper.common.SettingsContainer;
 import com.shtrih.fiscalprinter.ShtrihFiscalPrinter;
 import com.shtrih.tinyjavapostester.ConfigureLog4J;
-import com.shtrih.tinyjavapostester.DeviceListActivity;
 import com.shtrih.tinyjavapostester.JposConfig;
 import com.shtrih.util.StaticContext;
 

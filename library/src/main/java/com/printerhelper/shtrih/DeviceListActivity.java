@@ -1,4 +1,4 @@
-package com.shtrih.tinyjavapostester;
+package com.printerhelper.shtrih;
 
 /*
  * Copyright (C) 2009 The Android Open Source Project
@@ -34,7 +34,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.shtrih.fiscalprinter.R;
+
+import java.util.Set;
+
 /**
  * This Activity appears as a dialog. It lists any paired devices and devices
  * detected in the area after discovery. When a device is chosen by the user,
@@ -54,8 +56,9 @@ public class DeviceListActivity extends Activity {
 	private BluetoothAdapter mBtAdapter;
 	private ArrayAdapter<String> mPairedDevicesArrayAdapter;
 	private ArrayAdapter<String> mNewDevicesArrayAdapter;
+    private Button scanButton;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -67,13 +70,14 @@ public class DeviceListActivity extends Activity {
 		setResult(Activity.RESULT_CANCELED);
 
 		// Initialize the button to perform device discovery
-		Button scanButton = (Button) findViewById(R.id.button_scan);
+		scanButton = (Button) findViewById(R.id.button_scan);
 
 		scanButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				doDiscovery();
-				v.setVisibility(View.GONE);
+                v.setEnabled(false);
+//				v.setVisibility(View.GONE);
 			}
 		});
 
@@ -107,19 +111,23 @@ public class DeviceListActivity extends Activity {
 		if (mBtAdapter == null) {
 			return;
 		}
-		/*
-		 * // Get a set of currently paired devices Set<BluetoothDevice>
-		 * pairedDevices = mBtAdapter.getBondedDevices(); // If there are paired
-		 * devices, add each one to the ArrayAdapter if (pairedDevices.size() >
-		 * 0) {
-		 * findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
-		 * for (BluetoothDevice device : pairedDevices) {
-		 * mPairedDevicesArrayAdapter.add(device.getName() + "\n" +
-		 * device.getAddress()); } } else { String noDevices =
-		 * getResources().getText(R.string.none_paired) .toString();
-		 * mPairedDevicesArrayAdapter.add(noDevices); }
-		 */
-	}
+
+		 // Get a set of currently paired devices Set<BluetoothDevice>
+//        mPairedDevicesArrayAdapter.addAll();
+        Set<BluetoothDevice> pairedDevices = mBtAdapter.getBondedDevices();
+        if (pairedDevices.size() > 0) {
+            findViewById(R.id.title_paired_devices).setVisibility(View.VISIBLE);
+            for (BluetoothDevice device : pairedDevices) {
+                mPairedDevicesArrayAdapter.add(device.getName() + "\n" +
+                        device.getAddress());
+            }
+        } else {
+            String noDevices =
+                    getResources().getText(R.string.none_paired).toString();
+            mPairedDevicesArrayAdapter.add(noDevices);
+        }
+
+    }
 
 	@Override
 	protected void onDestroy() {
@@ -153,6 +161,7 @@ public class DeviceListActivity extends Activity {
 		if (mBtAdapter.isDiscovering()) {
 			mBtAdapter.cancelDiscovery();
 		}
+        mNewDevicesArrayAdapter.clear();
 
 		// Request discover from BluetoothAdapter
 		mBtAdapter.startDiscovery();
@@ -212,10 +221,10 @@ public class DeviceListActivity extends Activity {
 					.equals(action)) {
 				setProgressBarIndeterminateVisibility(false);
 				setTitle(R.string.select_device);
+                scanButton.setEnabled(true);
 				if (mNewDevicesArrayAdapter.getCount() == 0) {
-					String noDevices = getResources().getText(
-							R.string.none_found).toString();
-					mNewDevicesArrayAdapter.add(noDevices);
+                    String noDevices = getResources().getText(R.string.none_found).toString();
+                    mNewDevicesArrayAdapter.add(noDevices);
 				}
 			}
 		}

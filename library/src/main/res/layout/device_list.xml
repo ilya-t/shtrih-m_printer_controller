@@ -27,13 +27,15 @@
         android:id="@+id/title_paired_devices"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#666"
+        android:layout_marginTop="25dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:paddingLeft="5dp"
         android:shadowDx="1.2"
         android:shadowDy="1.2"
         android:shadowRadius="1.2"
-        android:textColor="#fff"
-        android:visibility="gone" />
+        android:text="Paired Devices:"
+         />
 
     <ListView
         android:id="@+id/paired_devices"
@@ -48,13 +50,12 @@
         android:id="@+id/title_new_devices"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#666"
         android:paddingLeft="5dp"
         android:shadowDx="1.2"
         android:shadowDy="1.2"
         android:shadowRadius="1.2"
-        android:textColor="#fff"
-        android:visibility="gone" />
+        android:text="New Devices:"
+        />
 
     <ListView
         android:id="@+id/new_devices"
