@@ -3,6 +3,7 @@ package com.printerhelper.shtrih;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.SparseArray;
 
 import com.printerhelper.common.BaseCashCheck;
@@ -351,8 +352,9 @@ public class ShtrihPrinter implements BasePrinter{
                 requestCode == DeviceListActivity.REQUEST_CONNECT_BT_DEVICE &&
                 data != null && data.getExtras() != null &&
                 data.getExtras().containsKey(DeviceListActivity.EXTRA_DEVICE_ADDRESS)) {
-            String macAddress = data.getExtras().getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
-            getConnectionSettings().setMacAddress(macAddress);
+            Bundle extras = data.getExtras();
+            getConnectionSettings().setDeviceName(extras.getString(DeviceListActivity.EXTRA_DEVICE_NAME));
+            getConnectionSettings().setMacAddress(extras.getString(DeviceListActivity.EXTRA_DEVICE_ADDRESS));
 
             settingsContainer.saveDeviceSettings(connectionSettings);
         }

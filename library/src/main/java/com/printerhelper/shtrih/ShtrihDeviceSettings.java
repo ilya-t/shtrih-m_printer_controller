@@ -19,6 +19,7 @@ import jpos.JposException;
 public class ShtrihDeviceSettings implements BaseDeviceSettings{
     private String macAddress;
 
+    private String deviceName;
     private String unifiedPOSVersion;
     private String deviceCategory;
     private String manufacturerName;
@@ -118,11 +119,11 @@ public class ShtrihDeviceSettings implements BaseDeviceSettings{
 
     @Override
     public String toString() {
+/*
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(dateTime);
 
         return
-                //super.toString();
                 "unifiedPOSVersion: "+String.valueOf(unifiedPOSVersion)+"\n"+
                 "deviceCategory: "+String.valueOf(deviceCategory)+"\n"+
                 "manufacturerName: "+String.valueOf(manufacturerName)+"\n"+
@@ -131,10 +132,19 @@ public class ShtrihDeviceSettings implements BaseDeviceSettings{
                 "firmwareRevision: "+String.valueOf(firmwareRevision)+"\n"+
                 "physicalInterface: "+String.valueOf(physicalInterface)+"\n"+
                 "dateTime: "+ c.getTime().toString()+ " / " +String.valueOf(dateTime)+"\n";
-                        //return super.toString();
+*/
+        return super.toString();
     }
 
     public void setError(PrintError error) {
         this.error = error;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 }
